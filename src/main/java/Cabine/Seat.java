@@ -5,6 +5,11 @@ import main.java.Person.Person;
 
 public class Seat {
     private PositionType position;
+
+    public Respirators getRespirators() {
+        return respirators;
+    }
+
     private Respirators respirators;
     private Person person;
 

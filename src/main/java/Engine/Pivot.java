@@ -1,7 +1,16 @@
 package main.java.Engine;
 
 public abstract class Pivot {
+    public BreakDisk[] getBreakDisks() {
+        return breakDisks;
+    }
+
     private BreakDisk[] breakDisks;
+
+    public Wheel[] getWheels() {
+        return wheels;
+    }
+
     private Wheel[] wheels;
 
 

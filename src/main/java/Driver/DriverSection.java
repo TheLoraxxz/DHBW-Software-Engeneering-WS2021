@@ -18,6 +18,11 @@ public class DriverSection {
     public SteeringWheel getSteeringWheel() {
         return steeringWheel;
     }
+
+    public JoystickFrontCannon getJoystickFrontCannon() {
+        return joystickFrontCannon;
+    }
+
     private JoystickFrontCannon joystickFrontCannon;
 
     public DriverSection() {
