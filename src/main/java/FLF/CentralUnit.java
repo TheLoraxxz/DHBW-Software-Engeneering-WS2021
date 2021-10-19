@@ -11,6 +11,16 @@ import main.java.Operator.OperatorSection;
 public class CentralUnit {
     private FLF flf;
 
+    public CentralUnit(FLF pflf) {
+        this.flf = pflf;
+        frontCannon = new FrontCannon();
+        headCannon = new HeadCannon();
+        driverSection = new DriverSection();
+        operatorSection = new OperatorSection();
+        pivotsStatic = new PivotStatic[]{new PivotStatic(),new PivotStatic()};
+        pivotsTurnable = new PivotTurnable[]{new PivotTurnable(),new PivotTurnable()};
+    }
+
     public DriverSection getDriverSection() {
         return driverSection;
     }

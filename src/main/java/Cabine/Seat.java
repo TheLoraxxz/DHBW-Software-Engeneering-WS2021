@@ -6,6 +6,11 @@ import main.java.Person.Person;
 public class Seat {
     private PositionType position;
 
+    public Seat(PositionType position) {
+        this.position = position;
+        respirators = new Respirators();
+    }
+
     public Respirators getRespirators() {
         return respirators;
     }

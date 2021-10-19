@@ -1,9 +1,18 @@
 package main.java.Cabine;
 
 import main.java.FLF.FLF;
+import main.java.FLF.PositionType;
 
 public class Cabine {
     private FLF flf;
+
+    public Cabine(FLF pflf) {
+        busDoors = new BusDoor[]{new BusDoor(),new BusDoor()};
+        this.flf = pflf;
+        seats = new Seat[]{new Seat(PositionType.frontleft),new Seat(PositionType.frontright),new Seat(PositionType.backleft), new Seat(PositionType.backright)};
+        energyDisplay = new EnergyDisplay();
+        speedDisplay = new SpeedDisplay();
+    }
 
     public BusDoor[] getBusDoors() {
         return busDoors;

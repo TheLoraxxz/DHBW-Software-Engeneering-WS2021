@@ -27,12 +27,12 @@ public class FLF {
 
 
     public FLF() {
-        cabine = new Cabine();
+        cabine = new Cabine(this);
         batteries = new Batteries[]{
                     new Batteries(),
                     new Batteries(),
                     new Batteries(),
                     new Batteries()};
-        centralUnit = new CentralUnit();
+        centralUnit = new CentralUnit(this);
     }
 }
