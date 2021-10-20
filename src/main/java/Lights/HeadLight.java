@@ -1,4 +1,10 @@
 package main.java.Lights;
 
-public class HeadLight {
+import main.java.FLF.PositionType;
+
+public class HeadLight extends Lights{
+
+    HeadLight(PositionType pos) {
+        this.position = pos;
+    }
 }

@@ -1,4 +1,10 @@
 package main.java.Lights;
 
-public class BreakLight {
+import main.java.FLF.PositionType;
+
+public class BreakLight extends Lights{
+
+    BreakLight(PositionType pos) {
+        this.position = pos;
+    }
 }
