@@ -9,10 +9,8 @@ import main.java.ExtinguishDevices.HeadCannon;
 import main.java.Operator.OperatorSection;
 
 public class CentralUnit {
-    private FLF flf;
 
-    public CentralUnit(FLF pflf) {
-        this.flf = pflf;
+    public CentralUnit() {
         frontCannon = new FrontCannon();
         headCannon = new HeadCannon();
         driverSection = new DriverSection();

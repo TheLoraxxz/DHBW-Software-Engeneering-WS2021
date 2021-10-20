@@ -16,6 +16,11 @@ public class Seat {
     }
 
     private Respirators respirators;
+
+    public Person getPerson() {
+        return person;
+    }
+
     private Person person;
 
     public void setPerson(Person person) {

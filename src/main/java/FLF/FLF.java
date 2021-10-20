@@ -1,17 +1,17 @@
 package main.java.FLF;
 
-import main.java.Cabine.Cabine;
+import main.java.Cabine.Cabin;
 
 public class FLF {
 
     private long iteration;
     private double speed;
 
-    public Cabine getCabine() {
-        return cabine;
+    public Cabin getCabin() {
+        return cabin;
     }
 
-    private Cabine cabine;
+    private Cabin cabin;
 
     public Batteries[] getBatteries() {
         return batteries;
@@ -26,13 +26,59 @@ public class FLF {
     private CentralUnit centralUnit;
 
 
-    public FLF() {
-        cabine = new Cabine(this);
-        batteries = new Batteries[]{
+    public FLF(Builder builder) {
+        cabin = builder.cabin;
+        centralUnit = builder.centralUnit;
+        batteries = builder.batteries;
+        speed = builder.speed;
+        iteration = builder.iteration;
+    }
+
+    public static class Builder{
+        private long iteration;
+        private double speed;
+        private Cabin cabin;
+        private CentralUnit centralUnit;
+        private Batteries[] batteries;
+
+        public Builder cabin()
+        {
+            cabin = new Cabin();
+            return this;
+        }
+
+        public Builder centralUnit()
+        {
+            centralUnit = new CentralUnit();
+            return this;
+        }
+
+        public Builder batteries()
+        {
+            batteries = new Batteries[]{
                     new Batteries(),
                     new Batteries(),
                     new Batteries(),
                     new Batteries()};
-        centralUnit = new CentralUnit(this);
+            return this;
+        }
+
+        public Builder speed()
+        {
+            speed = 0;
+            return this;
+        }
+
+        public Builder iteration()
+        {
+            iteration = 0;
+            return this;
+        }
+
+        public FLF build()
+        {
+            return new FLF(this);
+        }
     }
 }
+
