@@ -1,4 +1,10 @@
 package main.java.Operator;
 
-public interface SwitchType {
+public enum SwitchType {
+    electronicMotor,
+    headLightsFront,
+    warningLights,
+    headLightsRoof,
+    SideLights,
+    BlueLights
 }

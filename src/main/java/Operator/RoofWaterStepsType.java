@@ -1,4 +1,7 @@
 package main.java.Operator;
 
-public interface RoofWaterStepsType {
+public enum RoofWaterStepsType {
+    a,
+    b,
+    c
 }

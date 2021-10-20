@@ -1,4 +1,9 @@
 package main.java.Operator;
 
-public class JoystickHeadCanon {
+import main.java.Joystick.Joystick;
+
+public class JoystickHeadCanon extends Joystick {
+    JoystickHeadCanon() {
+        super();
+    }
 }

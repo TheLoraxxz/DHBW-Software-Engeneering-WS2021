@@ -1,4 +1,11 @@
 package main.java.Operator;
 
-public interface FrontWaterStepsType {
+public enum FrontWaterStepsType {
+    fiveHundret,
+    oneThausand,
+    oneThausandFiveHundret,
+    twoThausand,
+    twoThausandFiveHundret,
+    threeThausand,
+    threeThausandFiveHundret
 }

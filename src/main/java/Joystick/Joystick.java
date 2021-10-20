@@ -3,9 +3,9 @@ package main.java.Joystick;
 import main.java.FLF.PositionType;
 
 public abstract class Joystick {
-    JoyStickFeeler feeler;
+    protected JoyStickFeeler feeler;
 
-    PressureButton[] buttons;
+    protected PressureButton[] buttons;
     public Joystick() {
         feeler = new JoyStickFeeler();
         buttons = new PressureButton[]{new PressureButton(PositionType.left), new PressureButton(PositionType.right)};
