@@ -1,7 +1,6 @@
 package main.java.Operator;
 
 import main.java.ExtinguishDevices.FrontCannon;
-import main.java.ExtinguishDevices.ICannon;
 import main.java.ExtinguishDevices.KnopRoofStepsType;
 
 public class KnobFrontWaterCanon implements IKnob{

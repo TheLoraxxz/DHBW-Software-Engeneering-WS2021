@@ -1,4 +1,4 @@
 package main.java.Person;
 
-public class StaffMember {
+public class StaffMember extends Person {
 }
