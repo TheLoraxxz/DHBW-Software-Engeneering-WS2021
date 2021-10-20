@@ -1,22 +1,29 @@
 package main.java.FLF;
 
 import main.java.Driver.DriverSection;
+import main.java.Engine.ElectricMotor;
 import main.java.Engine.Pivot;
 import main.java.Engine.PivotStatic;
 import main.java.Engine.PivotTurnable;
 import main.java.ExtinguishDevices.FrontCannon;
 import main.java.ExtinguishDevices.HeadCannon;
+import main.java.Lights.Lights;
 import main.java.Operator.OperatorSection;
+import main.java.Operator.SwitchType;
+
+import java.util.HashMap;
 
 public class CentralUnit {
     private FLF flf;
-
+    private HashMap<SwitchType,Lights[]> lights;
+    ElectricMotor[] motors;
     public CentralUnit(FLF pflf) {
         this.flf = pflf;
         frontCannon = new FrontCannon();
+        this.motors = new ElectricMotor[2];
         headCannon = new HeadCannon();
         driverSection = new DriverSection();
-        operatorSection = new OperatorSection();
+        operatorSection = new OperatorSection(frontCannon,headCannon,lights,this.motors);
         pivotsStatic = new PivotStatic[]{new PivotStatic(),new PivotStatic()};
         pivotsTurnable = new PivotTurnable[]{new PivotTurnable(),new PivotTurnable()};
     }

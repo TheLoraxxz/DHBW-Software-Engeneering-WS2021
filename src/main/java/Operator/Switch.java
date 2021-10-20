@@ -1,18 +1,17 @@
 package main.java.Operator;
 
+import main.java.Engine.ElectricMotor;
 import main.java.Lights.Lights;
 
 import java.util.HashMap;
 
-public class Switch {
+public abstract class Switch {
 
-    private Lights[] lights;
-    private SwitchType switchTypeOperation;
-
-    Switch(SwitchType type, HashMap<SwitchType, Lights[]> lights) {
+    protected SwitchType switchTypeOperation;
+    Switch(SwitchType type) {
         this.switchTypeOperation = type;
-        this.lights=lights.get(type);
     }
+
     public void on() {
 
     }

@@ -4,5 +4,5 @@ import main.java.ExtinguishDevices.ICannon;
 import main.java.ExtinguishDevices.KnopRoofStepsType;
 
 public interface IKnob {
-    public void changeStep(KnopRoofStepsType step, ICannon canon);
+    public void changeStep(KnopRoofStepsType step);
 }

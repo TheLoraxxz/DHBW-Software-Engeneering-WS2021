@@ -5,8 +5,15 @@ import main.java.ExtinguishDevices.ICannon;
 import main.java.ExtinguishDevices.KnopRoofStepsType;
 
 public class KnobRoofWaterCanon implements IKnob{
+
+    private HeadCannon canon;
+
+    KnobRoofWaterCanon(HeadCannon canon) {
+        this.canon = canon;
+    }
+
     @Override
-    public void changeStep(KnopRoofStepsType step, ICannon canon) {
+    public void changeStep(KnopRoofStepsType step) {
 
     }
 }
