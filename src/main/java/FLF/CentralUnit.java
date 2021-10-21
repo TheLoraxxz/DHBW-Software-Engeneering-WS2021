@@ -1,23 +1,65 @@
 package main.java.FLF;
 
 import main.java.Driver.DriverSection;
-import main.java.Engine.Pivot;
+import main.java.Engine.ElectricMotor;
 import main.java.Engine.PivotStatic;
 import main.java.Engine.PivotTurnable;
 import main.java.ExtinguishDevices.FrontCannon;
 import main.java.ExtinguishDevices.HeadCannon;
+import main.java.Lights.BlueLight;
+import main.java.Lights.HeadLight;
 import main.java.Lights.Lights;
+import main.java.Lights.SideLight;
 import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
 
 import java.util.HashMap;
 
 public class CentralUnit {
-    private FLF flf;
     private HashMap<SwitchType,Lights[]> lights;
     ElectricMotor[] motors;
-    public CentralUnit(FLF pflf) {
-        this.flf = pflf;
+
+    public CentralUnit() {
+        this.lights = new HashMap<>();
+        this.lights.put(SwitchType.SideLights,new Lights[10]); //creating the ten side Lights
+        this.lights.put(SwitchType.headLightsFront,new Lights[6]); // creating the 6 front lights
+        this.lights.put(SwitchType.headLightsRoof,new Lights[4]); //4 roof lights roof
+        this.lights.put(SwitchType.BlueLights,new Lights[10]);
+        for (int i =0;i<10;i++) {
+            if (i<5) {
+                this.lights.get(SwitchType.SideLights)[i] =new SideLight(PositionType.left); //5 on each side
+            } else {
+                this.lights.get(SwitchType.SideLights)[i] =new SideLight(PositionType.right);
+            }
+        }
+        for (int i =0;i<6;i++) {
+            if (i<3) { //3 on each side
+                this.lights.get(SwitchType.headLightsFront)[i] = new HeadLight(PositionType.frontleftbottom);
+            } else {
+                this.lights.get(SwitchType.headLightsFront)[i] = new HeadLight(PositionType.frontrightbottom);
+            }
+        }
+        for (int i=0;i<4;i++) { // 4 on the top
+            this.lights.get(SwitchType.headLightsFront)[i] = new HeadLight(PositionType.frontop);
+        }
+        //the blue lights at the front
+        this.lights.get(SwitchType.BlueLights)[0] = new BlueLight(PositionType.frontleftbottom,1);
+        this.lights.get(SwitchType.BlueLights)[1] = new BlueLight(PositionType.frontrightbottom,1);
+        //blue Lights at the top front left and right
+        this.lights.get(SwitchType.BlueLights)[2] = new BlueLight(PositionType.fronlefttop,4);
+        this.lights.get(SwitchType.BlueLights)[3] = new BlueLight(PositionType.fronlefttop,4);
+
+        this.lights.get(SwitchType.BlueLights)[4] = new BlueLight(PositionType.frontrighttop,4);
+        this.lights.get(SwitchType.BlueLights)[5] = new BlueLight(PositionType.frontrighttop,4);
+        //bluelights at the back left and right
+        this.lights.get(SwitchType.BlueLights)[6] = new BlueLight(PositionType.backrighttop,2);
+        this.lights.get(SwitchType.BlueLights)[7] = new BlueLight(PositionType.backrighttop,2);
+
+        this.lights.get(SwitchType.BlueLights)[8] = new BlueLight(PositionType.backlefttop,2);
+        this.lights.get(SwitchType.BlueLights)[9] = new BlueLight(PositionType.backlefttop,2);
+
+        //TODO: Fix WarningLights --> need to be part of LED (maybe vererbung or just inclusion) --> @Coins???
+
         frontCannon = new FrontCannon();
         this.motors = new ElectricMotor[2];
         headCannon = new HeadCannon();

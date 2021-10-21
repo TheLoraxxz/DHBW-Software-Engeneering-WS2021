@@ -10,6 +10,7 @@ public enum PositionType {
     frontleftbottom,
     frontrightbottom,
     fronlefttop,
+    frontop,
     frontrighttop,
     backleftbottom,
     backrightbottom,
