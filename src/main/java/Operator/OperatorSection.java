@@ -13,10 +13,12 @@ public class OperatorSection {
 
     final PositionType positionRelativeToControlPanel =PositionType.right;
     private ControlPanel panel;
+    private JoystickHeadCanon joystick;
     private Operator operator;
 
     public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor) {
         this.panel = new ControlPanel(front,head,lights,motor);
+        this.joystick = new JoystickHeadCanon(head);
     }
 
     public void setOperator(Operator operator) {
