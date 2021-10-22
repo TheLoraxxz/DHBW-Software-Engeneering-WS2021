@@ -4,7 +4,7 @@ import main.java.FLF.PositionType;
 
 public class BreakLight extends Lights{
 
-    BreakLight(PositionType pos) {
+    public BreakLight(PositionType pos) {
         this.position = pos;
     }
 }

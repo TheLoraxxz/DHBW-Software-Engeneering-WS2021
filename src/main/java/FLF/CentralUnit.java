@@ -4,9 +4,7 @@ import main.java.Driver.DriverSection;
 import main.java.Engine.ElectricMotor;
 import main.java.Engine.PivotStatic;
 import main.java.Engine.PivotTurnable;
-import main.java.ExtinguishDevices.FrontCannon;
-import main.java.ExtinguishDevices.HeadCannon;
-import main.java.ExtinguishDevices.MixDevice;
+import main.java.ExtinguishDevices.*;
 import main.java.Lights.*;
 import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
@@ -14,13 +12,25 @@ import main.java.Operator.SwitchType;
 import java.util.HashMap;
 
 public class CentralUnit {
-    private HashMap<SwitchType, Lights[]> lights;
 
     ElectricMotor[] motors;
 
+    private HashMap<SwitchType, Lights[]> lights;
     private BreakLight breakLight[];
     private TurnSignalLight turnSignalLight[];
 
+    private PivotTurnable[] pivotsTurnable;
+    private PivotStatic[] pivotsStatic;
+
+    private FrontCannon frontCannon;
+    private HeadCannon headCannon;
+
+    private OperatorSection operatorSection;
+    private DriverSection driverSection;
+
+
+
+    private GroundSprayNozzles[] groundSprayNozzles;
     public CentralUnit() {
         this.lights = new HashMap<>();
         this.lights.put(SwitchType.SideLights, new Lights[10]); //creating the ten side Lights
@@ -66,8 +76,12 @@ public class CentralUnit {
                 new TurnSignalLight(PositionType.frontrightbottom),
                 new TurnSignalLight(PositionType.backleftbottom),
                 new TurnSignalLight(PositionType.backrightbottom)};
+        this.breakLight = new BreakLight[]{new BreakLight(PositionType.backleftbottom),new BreakLight(PositionType.backrightbottom)};
         // LIghts finished
-        MixDevice mixer = new MixDevice();
+        this.groundSprayNozzles = new GroundSprayNozzles[]{new GroundSprayNozzles(),new GroundSprayNozzles()};
+        WaterTank tank1 = new WaterTank();
+        FoamTank tank2 = new FoamTank();
+        MixDevice mixer = new MixDevice(tank1,tank2);
         frontCannon = new FrontCannon(mixer);
         headCannon = new HeadCannon(mixer);
         this.motors = new ElectricMotor[2];
@@ -82,13 +96,11 @@ public class CentralUnit {
         return driverSection;
     }
 
-    private DriverSection driverSection;
 
     public OperatorSection getOperatorSection() {
         return operatorSection;
     }
 
-    private OperatorSection operatorSection;
 
     public HeadCannon getHeadCannon() {
         return headCannon;
@@ -114,29 +126,26 @@ public class CentralUnit {
         return this.turnSignalLight;
     }
 
-
     public BreakLight[] getBreakLights() {
         return this.breakLight;
     }
 
-    private HeadCannon headCannon;
 
     public FrontCannon getFrontCannon() {
         return frontCannon;
     }
 
-    private FrontCannon frontCannon;
 
     public PivotStatic[] getPivotsStatic() {
         return pivotsStatic;
     }
 
-    private PivotStatic[] pivotsStatic;
 
     public PivotTurnable[] getPivotsTurnable() {
         return pivotsTurnable;
     }
 
-    private PivotTurnable[] pivotsTurnable;
-
+    public GroundSprayNozzles[] getGroundSprayNozzles() {
+        return groundSprayNozzles;
+    }
 }
