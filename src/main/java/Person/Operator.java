@@ -44,6 +44,6 @@ public class Operator extends Person implements IOperator{
 
     @Override
     public void sitDown(OperatorSection section) {
-
+        this.operatorSection = section;
     }
 }
