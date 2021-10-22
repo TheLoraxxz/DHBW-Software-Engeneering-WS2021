@@ -89,13 +89,12 @@ public class TestApplication {
         }
         assertNotNull(flf.getCentralUnit().getOperatorSection().getPanel().getKnobRoof());
         assertNotNull(flf.getCentralUnit().getOperatorSection().getPanel());
-
     }
     @Test
     @Order(2)
     public void usageControlPanel()
     {
-
+        
     }
     @Test
     @Order(3)
