@@ -7,8 +7,7 @@ public class SteeringWheel {
     SteeringWheel(TurnSignalLight[] lights) {
         this.turnSignalLight = lights;
     }
-    public void turn(float turnValue)
-    {
+    public void turn(float turnValue) {
 
     }
 }
