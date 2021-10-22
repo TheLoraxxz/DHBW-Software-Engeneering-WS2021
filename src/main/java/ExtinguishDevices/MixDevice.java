@@ -19,4 +19,8 @@ public class MixDevice {
     public MixType getMixType() {
         return mixType;
     }
+
+    public void pumpOut(int times) {
+
+    }
 }

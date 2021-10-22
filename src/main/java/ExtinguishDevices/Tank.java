@@ -1,7 +1,7 @@
 package main.java.ExtinguishDevices;
 
 public abstract class Tank {
-    private int capacity[][][];
+    private boolean capacity[][][];
 
     public abstract void fill();
 }
