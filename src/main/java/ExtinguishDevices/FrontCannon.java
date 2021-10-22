@@ -2,9 +2,8 @@ package main.java.ExtinguishDevices;
 
 public class FrontCannon {
     private FrontWaterStepsType steps;
-    private MixDevice mixDevice;
-    public FrontCannon(MixDevice mixer) {
+
+    public FrontCannon() {
         this.steps = FrontWaterStepsType.one;
-        this.mixDevice = mixer;
     }
 }

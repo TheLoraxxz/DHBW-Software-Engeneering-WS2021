@@ -6,8 +6,4 @@ public class MixDevice {
     public MixDevice() {
         this.mixType = MixType.zero;
     }
-
-    public void setMixType(MixType mixType) {
-        this.mixType = mixType;
-    }
 }

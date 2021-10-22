@@ -1,7 +1,6 @@
 package main.java.Driver;
 
 import main.java.FLF.PositionType;
-import main.java.Lights.TurnSignalLight;
 
 public class DriverSection {
     private Driver driver;
@@ -26,12 +25,11 @@ public class DriverSection {
 
     private JoystickFrontCannon joystickFrontCannon;
 
-    public DriverSection(TurnSignalLight[] turnLight) {
+    public DriverSection() {
         relativePositionToControlPanel = PositionType.left;
         gasPedal = new GasPedal();
         breakPedal = new BreakPedal();
-        steeringWheel = new SteeringWheel(turnLight);
+        steeringWheel = new SteeringWheel();
         joystickFrontCannon = new JoystickFrontCannon();
-
     }
 }
