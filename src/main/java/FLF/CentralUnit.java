@@ -7,10 +7,7 @@ import main.java.Engine.PivotTurnable;
 import main.java.ExtinguishDevices.FrontCannon;
 import main.java.ExtinguishDevices.HeadCannon;
 import main.java.ExtinguishDevices.MixDevice;
-import main.java.Lights.BlueLight;
-import main.java.Lights.HeadLight;
-import main.java.Lights.Lights;
-import main.java.Lights.SideLight;
+import main.java.Lights.*;
 import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
 
@@ -18,7 +15,11 @@ import java.util.HashMap;
 
 public class CentralUnit {
     private HashMap<SwitchType,Lights[]> lights;
+
     ElectricMotor[] motors;
+
+    private BreakLight breakLight[];
+    private TurnSignalLight turnSignalLight[];
 
     public CentralUnit() {
         this.lights = new HashMap<>();
@@ -26,6 +27,7 @@ public class CentralUnit {
         this.lights.put(SwitchType.headLightsFront,new Lights[6]); // creating the 6 front lights
         this.lights.put(SwitchType.headLightsRoof,new Lights[4]); //4 roof lights roof
         this.lights.put(SwitchType.BlueLights,new Lights[10]);
+        this.lights.put(SwitchType.warningLights,new Lights[2]);
         for (int i =0;i<10;i++) {
             if (i<5) {
                 this.lights.get(SwitchType.SideLights)[i] =new SideLight(PositionType.left); //5 on each side
@@ -57,13 +59,19 @@ public class CentralUnit {
         this.lights.get(SwitchType.BlueLights)[8] = new BlueLight(PositionType.backlefttop,2);
         this.lights.get(SwitchType.BlueLights)[9] = new BlueLight(PositionType.backlefttop,2);
 
-        //TODO: Fix WarningLights --> need to be part of LED (maybe vererbung or just inclusion) --> @Coins???
+        this.lights.get(SwitchType.warningLights)[0] = new WarningLight(PositionType.fronlefttop);
+        this.lights.get(SwitchType.warningLights)[1] = new WarningLight(PositionType.backrighttop);
+
+        this.turnSignalLight = new TurnSignalLight[]{new TurnSignalLight(PositionType.frontleftbottom),
+                new TurnSignalLight(PositionType.frontrightbottom),
+                new TurnSignalLight(PositionType.backleftbottom),
+                new TurnSignalLight(PositionType.backrightbottom)};
         MixDevice mixer = new MixDevice();
         frontCannon = new FrontCannon(mixer);
         headCannon = new HeadCannon(mixer);
         this.motors = new ElectricMotor[2];
-        driverSection = new DriverSection();
-        operatorSection = new OperatorSection(frontCannon,headCannon,lights,this.motors);
+        driverSection = new DriverSection(this.turnSignalLight);
+        operatorSection = new OperatorSection(frontCannon,headCannon,lights,this.motors,mixer);
         pivotsStatic = new PivotStatic[]{new PivotStatic(),new PivotStatic()};
         pivotsTurnable = new PivotTurnable[]{new PivotTurnable(),new PivotTurnable()};
     }

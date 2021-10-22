@@ -3,6 +3,7 @@ package main.java.Operator;
 import main.java.Engine.ElectricMotor;
 import main.java.ExtinguishDevices.FrontCannon;
 import main.java.ExtinguishDevices.HeadCannon;
+import main.java.ExtinguishDevices.MixDevice;
 import main.java.FLF.PositionType;
 import main.java.Lights.Lights;
 import main.java.Person.Operator;
@@ -16,9 +17,9 @@ public class OperatorSection {
     private JoystickHeadCanon joystick;
     private Operator operator;
 
-    public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor) {
+    public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor, MixDevice mixing) {
         this.panel = new ControlPanel(front,head,lights,motor);
-        this.joystick = new JoystickHeadCanon(head);
+        this.joystick = new JoystickHeadCanon(head,mixing);
     }
 
     public void setOperator(Operator operator) {
