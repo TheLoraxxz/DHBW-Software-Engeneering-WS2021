@@ -1,5 +1,7 @@
 package main.java.Person;
 
+import main.java.Driver.DriverSection;
+
 public class Driver extends Person implements IDriver{
 
     @Override
@@ -14,6 +16,11 @@ public class Driver extends Person implements IDriver{
 
     @Override
     public void pressBreakPedal() {
+
+    }
+
+    @Override
+    public void sitDown(DriverSection section) {
 
     }
 
