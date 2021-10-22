@@ -50,13 +50,13 @@ public class TestApplication {
             {
                 if (flf.getCentralUnit().getBlueLights()[i] instanceof BlueLight)
                  switch(i){
-                    case 0:
+                    case 0:assertEquals(2,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).length);
                     case 1:assertEquals(1,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
-                    case 2:
+                    case 2:assertEquals(4,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).length);
                     case 3:
                     case 4:
                     case 5:assertEquals(4,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
-                    case 6:
+                    case 6:assertEquals(4,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).length);
                     case 7:
                     case 8:
                     case 9:assertEquals(2,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
