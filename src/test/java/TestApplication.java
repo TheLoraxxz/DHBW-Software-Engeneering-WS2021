@@ -3,6 +3,8 @@ import main.java.Cabine.BusDoor;
 import main.java.Cabine.Seat;
 import main.java.Engine.Pivot;
 import main.java.FLF.FLF;
+import main.java.Lights.BlueLight;
+import main.java.Operator.LightSwitch;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,7 +17,7 @@ public class TestApplication {
 
     @BeforeEach
     public void Setup(){
-        flf = new FLF();
+        flf = new FLF.Builder().build();
     }
 
     @Test
@@ -23,43 +25,46 @@ public class TestApplication {
     public void buildComplete()
     {
         //flfS
-        assertNotNull(flf.getCabine());
+        assertNotNull(flf.getCabin());
         assertNotNull(flf.getCentralUnit());
         assertEquals(4,flf.getBatteries().length);
         //Cabine
-        assertEquals(4,flf.getCabine().getSeats().length);
-        for (Seat s:flf.getCabine().getSeats()) {
+        assertEquals(4,flf.getCabin().getSeats().length);
+        for (Seat s:flf.getCabin().getSeats()) {
             assertNotNull(s.getRespirators());
         }
-        assertEquals(2,flf.getCabine().getBusDoors().length);
-        assertNotNull(flf.getCabine().getEnergyDisplay());
-        assertNotNull(flf.getCabine().getSpeedDisplay());
-        for (BusDoor b:flf.getCabine().getBusDoors()) {
+        assertEquals(2,flf.getCabin().getBusDoors().length);
+        assertNotNull(flf.getCabin().getEnergyDisplay());
+        assertNotNull(flf.getCabin().getSpeedDisplay());
+        for (BusDoor b:flf.getCabin().getBusDoors()) {
             assertEquals(2,b.getDoorFeelers().length);
         }
         //central unit
         //lights
-        /* assertEquals(2,flf.getCentralUnit().getWarningLights());
-           assertEquals(20,flf.getCentralUnit().getHeadLights());
-           assertEquals(10,flf.getCentralUnit().getBlueLights());
+        assertEquals(2,flf.getCentralUnit().getWarningLights().length);
+        assertEquals(6,flf.getCentralUnit().getHeadFrontLights().length);
+        assertEquals(4,flf.getCentralUnit().getHeadRoofLights().length);
+        assertEquals(10,flf.getCentralUnit().getSideLights().length);
+           assertEquals(10,flf.getCentralUnit().getBlueLights().length);
             for(int i =0; i < 10;i++)
             {
-                 switch(i)
+                if (flf.getCentralUnit().getBlueLights()[i] instanceof BlueLight)
+                 switch(i){
                     case 0:
-                    case 1:assertEquals(1,flf.getCentralUnit().getBlueLights()[i].getLeds());break;
+                    case 1:assertEquals(1,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
                     case 2:
                     case 3:
                     case 4:
-                    case 5:assertEquals(2,flf.getCentralUnit().getBlueLights()[i].getLeds());break;
+                    case 5:assertEquals(4,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
                     case 6:
                     case 7:
                     case 8:
-                    case 9:assertEquals(4,flf.getCentralUnit().getBlueLights()[i].getLeds());break;
+                    case 9:assertEquals(2,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
             }
         }
-           assertEquals(4,flf.getCentralUnit().getTurnSignalLights());
-           assertEquals(2,flf.getCentralUnit().getBreakLights());
-         */
+        assertEquals(4,flf.getCentralUnit().getTurnSignalLights().length);
+        assertEquals(2,flf.getCentralUnit().getBreakLights().length);
+
         //Cannons
         assertNotNull(flf.getCentralUnit().getFrontCannon());
         assertNotNull(flf.getCentralUnit().getHeadCannon());
@@ -78,12 +83,12 @@ public class TestApplication {
         assertNotNull(flf.getCentralUnit().getDriverSection().getJoystickFrontCannon());
         //operatorSection
         assertNotNull(flf.getCentralUnit().getOperatorSection());
-        /*assertNotNull(flf.getCentralUnit().getOperatorSection().getControlPanel());
-        for (Switch s:flf.getCentralUnit().getOperatorSection().getControlPanel().getSwitches()) {
+        assertNotNull(flf.getCentralUnit().getOperatorSection().getPanel());
+        for (LightSwitch s:flf.getCentralUnit().getOperatorSection().getPanel().getSwitches()) {
             assertNotNull(s);
         }
-        assertNotNull(flf.getCentralUnit().getOperatorSection().getControlPanel().getKnopRoofWaterCanon);
-        assertNotNull(flf.getCentralUnit().getOperatorSection().getControlPanel());*/
+        assertNotNull(flf.getCentralUnit().getOperatorSection().getPanel().getKnobRoof());
+        assertNotNull(flf.getCentralUnit().getOperatorSection().getPanel());
 
     }
     @Test
