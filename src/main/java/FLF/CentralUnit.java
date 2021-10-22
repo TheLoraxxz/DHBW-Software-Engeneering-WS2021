@@ -6,6 +6,7 @@ import main.java.Engine.PivotStatic;
 import main.java.Engine.PivotTurnable;
 import main.java.ExtinguishDevices.FrontCannon;
 import main.java.ExtinguishDevices.HeadCannon;
+import main.java.ExtinguishDevices.MixDevice;
 import main.java.Lights.BlueLight;
 import main.java.Lights.HeadLight;
 import main.java.Lights.Lights;
@@ -48,21 +49,19 @@ public class CentralUnit {
         //blue Lights at the top front left and right
         this.lights.get(SwitchType.BlueLights)[2] = new BlueLight(PositionType.fronlefttop,4);
         this.lights.get(SwitchType.BlueLights)[3] = new BlueLight(PositionType.fronlefttop,4);
-
         this.lights.get(SwitchType.BlueLights)[4] = new BlueLight(PositionType.frontrighttop,4);
         this.lights.get(SwitchType.BlueLights)[5] = new BlueLight(PositionType.frontrighttop,4);
         //bluelights at the back left and right
         this.lights.get(SwitchType.BlueLights)[6] = new BlueLight(PositionType.backrighttop,2);
         this.lights.get(SwitchType.BlueLights)[7] = new BlueLight(PositionType.backrighttop,2);
-
         this.lights.get(SwitchType.BlueLights)[8] = new BlueLight(PositionType.backlefttop,2);
         this.lights.get(SwitchType.BlueLights)[9] = new BlueLight(PositionType.backlefttop,2);
 
         //TODO: Fix WarningLights --> need to be part of LED (maybe vererbung or just inclusion) --> @Coins???
-
-        frontCannon = new FrontCannon();
+        MixDevice mixer = new MixDevice();
+        frontCannon = new FrontCannon(mixer);
+        headCannon = new HeadCannon(mixer);
         this.motors = new ElectricMotor[2];
-        headCannon = new HeadCannon();
         driverSection = new DriverSection();
         operatorSection = new OperatorSection(frontCannon,headCannon,lights,this.motors);
         pivotsStatic = new PivotStatic[]{new PivotStatic(),new PivotStatic()};
