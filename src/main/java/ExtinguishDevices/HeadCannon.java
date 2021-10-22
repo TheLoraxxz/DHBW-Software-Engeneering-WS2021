@@ -1,6 +1,6 @@
 package main.java.ExtinguishDevices;
 
-public class HeadCannon {
+public class HeadCannon extends Cannon{
 
     private KnopRoofStepsType steps;
     private Segments[] segments;
