@@ -2,15 +2,16 @@ package main.java.ExtinguishDevices;
 
 public class FrontCannon extends Cannon {
     private FrontWaterStepsType steps;
-
-    public FrontCannon() {
+    private MixDevice mixDevice;
+    public FrontCannon(MixDevice mix) {
         this.steps = FrontWaterStepsType.one;
+        this.mixDevice = mix;
     }
 
     @Override
     public void pumpOut() {
         switch (steps) {
-            case one ->this.mixDevice.pumpOut(500);
+            case one ->this.mixDevice.pumpOut((int) 500);
             case two ->this.mixDevice.pumpOut(1000);
             case three ->this.mixDevice.pumpOut(1500);
             case four ->this.mixDevice.pumpOut(2000);
