@@ -20,7 +20,7 @@ public class MixDevice {
         return mixType;
     }
 
-    public void pumpOut(int times) {
+    public void defill(int times) {
 
     }
 }
