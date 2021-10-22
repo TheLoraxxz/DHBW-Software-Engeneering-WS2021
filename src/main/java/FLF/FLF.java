@@ -25,7 +25,6 @@ public class FLF {
 
     private CentralUnit centralUnit;
 
-
     public FLF(Builder builder) {
         cabin = builder.cabin;
         centralUnit = builder.centralUnit;
@@ -34,45 +33,24 @@ public class FLF {
         iteration = builder.iteration;
     }
 
-    public static class Builder{
+public static class Builder{
         private long iteration;
         private double speed;
         private Cabin cabin;
         private CentralUnit centralUnit;
         private Batteries[] batteries;
 
-        public Builder cabin()
+        public Builder()
         {
             cabin = new Cabin();
-            return this;
-        }
-
-        public Builder centralUnit()
-        {
             centralUnit = new CentralUnit();
-            return this;
-        }
-
-        public Builder batteries()
-        {
             batteries = new Batteries[]{
                     new Batteries(),
                     new Batteries(),
                     new Batteries(),
                     new Batteries()};
-            return this;
-        }
-
-        public Builder speed()
-        {
             speed = 0;
-            return this;
-        }
-
-        public Builder iteration()
-        {
             iteration = 0;
-            return this;
         }
 
         public FLF build()
