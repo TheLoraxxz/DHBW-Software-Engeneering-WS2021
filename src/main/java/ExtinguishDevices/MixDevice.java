@@ -16,11 +16,15 @@ public class MixDevice {
         this.mixType = mixType;
     }
 
+    public void defill(int times) {
+        int foam = times/100*(mixType.getValue());
+        int water = times-foam;
+        this.water.defill(water);
+        this.foam.defill(foam);
+    }
+
     public MixType getMixType() {
         return mixType;
     }
 
-    public void defill(int times) {
-
-    }
 }
