@@ -13,9 +13,4 @@ public class JoyStickFeeler implements IFeeler{
         cannon.pumpOut();
 
     }
-
-    @Override
-    public void release() {
-
-    }
 }

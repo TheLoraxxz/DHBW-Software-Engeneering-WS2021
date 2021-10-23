@@ -1,7 +1,7 @@
 package main.java.Joystick;
 
 import main.java.ExtinguishDevices.Cannon;
-import main.java.ExtinguishDevices.HeadCannon;
+import main.java.ExtinguishDevices.FrontCannon;
 import main.java.FLF.PositionType;
 
 public class PressureButton implements IFeeler {
@@ -15,20 +15,15 @@ public class PressureButton implements IFeeler {
         this.cannon = cannon;
     }
 
-    public PressureButton(PressureButton pressureButton) {
-        this.position = pressureButton.getPosition();
-        this.cannon = pressureButton.getCannon();
-    }
-
     @Override
     public void press() {
+        if (this.cannon instanceof FrontCannon) {
 
+        } else {
+
+        }
     }
 
-    @Override
-    public void release() {
-
-    }
 
     public PositionType getPosition() {
         return position;
