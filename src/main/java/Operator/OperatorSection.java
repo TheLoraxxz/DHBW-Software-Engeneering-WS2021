@@ -22,15 +22,19 @@ public class OperatorSection {
         this.joystick = new JoystickHeadCanon(head,mixing);
     }
 
+
     public void setOperator(Operator operator) {
         this.operator = operator;
     }
+
     public PositionType getPositionRelativeToControlPanel() {
         return positionRelativeToControlPanel;
     }
+
     public ControlPanel getPanel() {
         return panel;
     }
+
     public Operator getOperator() {
         return operator;
     }
