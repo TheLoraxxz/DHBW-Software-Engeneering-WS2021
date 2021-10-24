@@ -106,20 +106,20 @@ public class CentralUnit {
         return headCannon;
     }
 
-    public WarningLight[] getWarningLights() {
-        return (WarningLight[]) this.lights.get(SwitchType.warningLights);
+    public Lights[] getWarningLights() {
+        return (Lights[]) this.lights.get(SwitchType.warningLights);
     }
 
-    public HeadLight[] getHeadFrontLights() {
-        return (HeadLight[]) this.lights.get(SwitchType.headLightsFront);
+    public Lights[] getHeadFrontLights() {
+        return (Lights[]) this.lights.get(SwitchType.headLightsFront);
     }
 
-    public HeadLight[] getHeadRoofLights() {
-        return (HeadLight[]) this.lights.get(SwitchType.headLightsRoof);
+    public Lights[] getHeadRoofLights() {
+        return (Lights[]) this.lights.get(SwitchType.headLightsRoof);
     }
 
-    public BlueLight[] getBlueLights() {
-        return (BlueLight[]) this.lights.get(SwitchType.BlueLights);
+    public Lights[] getBlueLights() {
+        return (Lights[]) this.lights.get(SwitchType.BlueLights);
     }
 
     public HeadLight[] getSideLights() {
