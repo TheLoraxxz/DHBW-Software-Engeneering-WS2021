@@ -122,6 +122,10 @@ public class CentralUnit {
         return (Lights[]) this.lights.get(SwitchType.BlueLights);
     }
 
+    public HeadLight[] getSideLights() {
+        return (HeadLight[]) this.lights.get(SwitchType.SideLights);
+    }
+
     public TurnSignalLight[] getTurnSignalLights() {
         return this.turnSignalLight;
     }
