@@ -8,6 +8,7 @@ import main.java.Lights.Lights;
 import java.util.HashMap;
 
 public class ControlPanel {
+
     LightSwitch[] switches;
     ElectroMotorSwitch motorSwitch;
     KnobFrontWaterCanon knobFront;
@@ -28,4 +29,22 @@ public class ControlPanel {
             }
         }
     }
+
+    public LightSwitch[] getSwitches() {
+        return switches;
+    }
+
+    public ElectroMotorSwitch getMotorSwitch() {
+        return motorSwitch;
+    }
+
+    public KnobFrontWaterCanon getKnobFront() {
+        return knobFront;
+    }
+
+    public KnobRoofWaterCanon getKnobRoof() {
+        return knobRoof;
+    }
+
+
 }

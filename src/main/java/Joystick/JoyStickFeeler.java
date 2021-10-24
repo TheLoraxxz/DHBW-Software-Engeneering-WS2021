@@ -1,6 +1,7 @@
 package main.java.Joystick;
 
 import main.java.ExtinguishDevices.Cannon;
+import main.java.ExtinguishDevices.CannonState;
 import main.java.ExtinguishDevices.HeadCannon;
 
 public class JoyStickFeeler implements IFeeler{
@@ -10,7 +11,8 @@ public class JoyStickFeeler implements IFeeler{
     }
     @Override
     public void press() {
-        cannon.pumpOut();
-
+        if (cannon.getCannonState()== CannonState.active) {
+            cannon.pumpOut();
+        }
     }
 }
