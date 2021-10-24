@@ -2,6 +2,7 @@ package main.java.ExtinguishDevices;
 
 public class FrontCannon extends Cannon {
     private FrontWaterStepsType steps;
+
     private float tiltDegree;
     private MixDevice mixDevice;
     public FrontCannon(MixDevice mix) {
@@ -20,13 +21,23 @@ public class FrontCannon extends Cannon {
 
     public void setCannonState(CannonState cannonState) {
         if (cannonState==CannonState.active) {
-            tiltDegree = 90;
+            this.tiltDegree = 90;
         } else {
-            tiltDegree =0;
+            this.tiltDegree =0;
         }
         this.cannonState = cannonState;
     }
+
+
     public void setSteps(FrontWaterStepsType steps) {
         this.steps = steps;
+    }
+
+    public FrontWaterStepsType getSteps() {
+        return steps;
+    }
+
+    public float getTiltDegree() {
+        return tiltDegree;
     }
 }
