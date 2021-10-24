@@ -11,6 +11,7 @@ public abstract class Cannon {
     }
 
     public abstract void pumpOut();
+    public abstract void setCannonState(CannonState cannonState);
 
     public CannonState getCannonState() {
         return cannonState;

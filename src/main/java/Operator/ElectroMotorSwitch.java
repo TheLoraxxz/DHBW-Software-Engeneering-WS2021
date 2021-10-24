@@ -8,13 +8,19 @@ public class ElectroMotorSwitch extends Switch{
         super(SwitchType.electroMotor);
         this.motor = motor;
     }
+
+
     @Override
     public void on() {
+        this.motor[0].setOn(true);
+        this.motor[1].setOn(true);
 
     }
 
     @Override
     public void off() {
+        this.motor[0].setOn(false);
+        this.motor[1].setOn(false);
 
     }
 }

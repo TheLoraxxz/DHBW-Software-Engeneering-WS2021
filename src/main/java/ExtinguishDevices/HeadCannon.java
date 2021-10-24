@@ -33,6 +33,7 @@ public class HeadCannon extends Cannon{
         this.mixDevice.defill(this.steps.getValue());
     }
 
+    @Override
     public void setCannonState(CannonState cannonState) {
         if (cannonState==CannonState.active) {
             this.segments[0].setTiltDegree(90);

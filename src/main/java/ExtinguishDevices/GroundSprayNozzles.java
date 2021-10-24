@@ -8,4 +8,9 @@ public class GroundSprayNozzles extends Cannon {
     public void pumpOut() {
 
     }
+
+    @Override
+    public void setCannonState(CannonState cannonState) {
+
+    }
 }

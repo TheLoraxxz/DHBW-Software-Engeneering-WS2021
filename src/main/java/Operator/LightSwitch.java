@@ -12,4 +12,19 @@ public class LightSwitch extends Switch {
         super(type);
         this.lights = lights.get(type);
     }
+
+
+    @Override
+    public void on() {
+        for (Lights t:lights) {
+            t.on();
+        }
+    }
+
+    @Override
+    public void off() {
+        for (Lights t:lights) {
+            t.off();
+        }
+    }
 }

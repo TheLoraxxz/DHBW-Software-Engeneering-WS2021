@@ -19,6 +19,7 @@ public class FrontCannon extends Cannon {
         return mixDevice;
     }
 
+    @Override
     public void setCannonState(CannonState cannonState) {
         if (cannonState==CannonState.active) {
             this.tiltDegree = 90;
