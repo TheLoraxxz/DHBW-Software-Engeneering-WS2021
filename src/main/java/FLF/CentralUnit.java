@@ -21,6 +21,18 @@ public class CentralUnit {
     private BreakLight breakLight[];
     private TurnSignalLight turnSignalLight[];
 
+    private PivotTurnable[] pivotsTurnable;
+    private PivotStatic[] pivotsStatic;
+
+    private FrontCannon frontCannon;
+    private HeadCannon headCannon;
+
+    private OperatorSection operatorSection;
+    private DriverSection driverSection;
+
+
+
+    private GroundSprayNozzles[] groundSprayNozzles;
     public CentralUnit() {
         this.lights = new HashMap<>();
         this.lights.put(SwitchType.SideLights, new Lights[10]); //creating the ten side Lights
@@ -66,9 +78,12 @@ public class CentralUnit {
                 new TurnSignalLight(PositionType.frontrightbottom),
                 new TurnSignalLight(PositionType.backleftbottom),
                 new TurnSignalLight(PositionType.backrightbottom)};
-        breakLight = new BreakLight[]{new BreakLight(PositionType.backleft), new BreakLight(PositionType.backright)};
-        // Lights finished
-        MixDevice mixer = new MixDevice();
+        this.breakLight = new BreakLight[]{new BreakLight(PositionType.backleftbottom),new BreakLight(PositionType.backrightbottom)};
+        // LIghts finished
+        this.groundSprayNozzles = new GroundSprayNozzles[]{new GroundSprayNozzles(),new GroundSprayNozzles()};
+        WaterTank tank1 = new WaterTank();
+        FoamTank tank2 = new FoamTank();
+        MixDevice mixer = new MixDevice(tank1,tank2);
         frontCannon = new FrontCannon(mixer);
         headCannon = new HeadCannon(mixer);
         this.motors = new ElectricMotor[2];
@@ -83,13 +98,11 @@ public class CentralUnit {
         return driverSection;
     }
 
-    private DriverSection driverSection;
 
     public OperatorSection getOperatorSection() {
         return operatorSection;
     }
 
-    private OperatorSection operatorSection;
 
     public HeadCannon getHeadCannon() {
         return headCannon;
@@ -98,8 +111,6 @@ public class CentralUnit {
     public Lights[] getWarningLights() {
         return (Lights[]) this.lights.get(SwitchType.warningLights);
     }
-
-    public Lights[] getSideLights() {return (Lights[]) this.lights.get(SwitchType.SideLights);}
 
     public Lights[] getHeadFrontLights() {
         return (Lights[]) this.lights.get(SwitchType.headLightsFront);
@@ -113,32 +124,34 @@ public class CentralUnit {
         return (Lights[]) this.lights.get(SwitchType.BlueLights);
     }
 
-    public Lights[] getTurnSignalLights() {
+    public HeadLight[] getSideLights() {
+        return (HeadLight[]) this.lights.get(SwitchType.SideLights);
+    }
+
+    public TurnSignalLight[] getTurnSignalLights() {
         return this.turnSignalLight;
     }
 
-    public Lights[] getBreakLights() {
+    public BreakLight[] getBreakLights() {
         return this.breakLight;
     }
 
-    private HeadCannon headCannon;
 
     public FrontCannon getFrontCannon() {
         return frontCannon;
     }
 
-    private FrontCannon frontCannon;
 
     public PivotStatic[] getPivotsStatic() {
         return pivotsStatic;
     }
 
-    private PivotStatic[] pivotsStatic;
 
     public PivotTurnable[] getPivotsTurnable() {
         return pivotsTurnable;
     }
 
-    private PivotTurnable[] pivotsTurnable;
-
+    public GroundSprayNozzles[] getGroundSprayNozzles() {
+        return groundSprayNozzles;
+    }
 }

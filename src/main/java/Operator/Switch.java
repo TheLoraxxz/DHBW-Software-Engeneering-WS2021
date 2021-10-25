@@ -12,13 +12,9 @@ public abstract class Switch {
         this.switchTypeOperation = type;
     }
 
-    public void on() {
+    public abstract void on();
 
-    }
-
-    public void off() {
-
-    }
+    public abstract void off();
     public SwitchType getSwitchTypeOperation() {
         return switchTypeOperation;
     }

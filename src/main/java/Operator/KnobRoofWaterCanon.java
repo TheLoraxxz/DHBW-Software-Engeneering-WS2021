@@ -3,7 +3,7 @@ package main.java.Operator;
 import main.java.ExtinguishDevices.HeadCannon;
 import main.java.ExtinguishDevices.KnopRoofStepsType;
 
-public class KnobRoofWaterCanon implements IKnob{
+public class KnobRoofWaterCanon {
 
     private HeadCannon canon;
 
@@ -11,8 +11,7 @@ public class KnobRoofWaterCanon implements IKnob{
         this.canon = canon;
     }
 
-    @Override
     public void changeStep(KnopRoofStepsType step) {
-
+        this.canon.setSteps(step);
     }
 }
