@@ -30,7 +30,7 @@ public class DriverSection {
         relativePositionToControlPanel = PositionType.left;
         gasPedal = new GasPedal();
         breakPedal = new BreakPedal();
-        steeringWheel = new SteeringWheel();
+        steeringWheel = new SteeringWheel(turnLight);
         joystickFrontCannon = new JoystickFrontCannon();
     }
 }
