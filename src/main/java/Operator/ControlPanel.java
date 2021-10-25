@@ -8,11 +8,12 @@ import main.java.Lights.Lights;
 import java.util.HashMap;
 
 public class ControlPanel {
-    public LightSwitch[] getSwitches() {
-        return switches;
+
+    public Lights[] getSwitches(SwitchType switchType) {
+        return switches.get(switchType);
     }
 
-    private LightSwitch[] switches;
+    private HashMap<SwitchType, Lights[]> switches;
 
     public ElectroMotorSwitch getMotorSwitch() {
         return motorSwitch;
@@ -36,15 +37,6 @@ public class ControlPanel {
         this.knobFront = new KnobFrontWaterCanon(front);
         this.knobRoof = new KnobRoofWaterCanon(head);
         this.motorSwitch = new ElectroMotorSwitch(motor);
-        this.switches = new LightSwitch[5];
-        for (byte i=0;i<5;i++) {
-            switch (i) {
-                case 0->this.switches[i] = new LightSwitch(SwitchType.BlueLights,lights);
-                case 1->this.switches[i] = new LightSwitch(SwitchType.SideLights,lights);
-                case 2->this.switches[i] = new LightSwitch(SwitchType.warningLights,lights);
-                case 3->this.switches[i] = new LightSwitch(SwitchType.headLightsFront,lights);
-                case 4->this.switches[i] = new LightSwitch(SwitchType.headLightsRoof,lights);
-            }
-        }
+        this.switches = lights;
     }
 }

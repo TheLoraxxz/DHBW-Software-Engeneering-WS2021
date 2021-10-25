@@ -3,13 +3,19 @@ package main.java.Lights;
 import main.java.FLF.PositionType;
 
 public abstract class Lights {
-    protected PositionType position;
-    public void on() {
-
+    public Lights() {
+        isOn = false;
     }
 
-    public void off(){
+    public boolean isOn() {
+        return isOn;
+    }
 
+    protected boolean isOn;
+    protected PositionType position;
+
+    public void changeLight() {
+        isOn = !isOn;
     }
 
     public PositionType getPosition() {

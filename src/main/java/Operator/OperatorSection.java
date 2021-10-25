@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class OperatorSection {
 
-    final PositionType positionRelativeToControlPanel =PositionType.right;
+    final PositionType positionRelativeToControlPanel = PositionType.right;
 
     public JoystickHeadCanon getJoystick() {
         return joystick;
@@ -20,6 +20,11 @@ public class OperatorSection {
 
     private ControlPanel panel;
     private JoystickHeadCanon joystick;
+
+    public void setPanel(ControlPanel panel) {
+        this.panel = panel;
+    }
+
     private Operator operator;
 
     public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor, MixDevice mixing) {
@@ -29,6 +34,7 @@ public class OperatorSection {
 
     public void setOperator(Operator operator) {
         this.operator = operator;
+        operator.setOperatorSection(this);
     }
     public PositionType getPositionRelativeToControlPanel() {
         return positionRelativeToControlPanel;

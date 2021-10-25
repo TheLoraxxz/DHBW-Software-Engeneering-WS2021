@@ -43,7 +43,7 @@ public class CentralUnit {
             }
         }
         for (int i = 0; i < 4; i++) { // 4 on the top
-            this.lights.get(SwitchType.headLightsFront)[i] = new HeadLight(PositionType.frontop);
+            this.lights.get(SwitchType.headLightsRoof)[i] = new HeadLight(PositionType.frontop);
         }
         //the blue lights at the front
         this.lights.get(SwitchType.BlueLights)[0] = new BlueLight(PositionType.frontleftbottom, 1);
