@@ -1,19 +1,10 @@
 package main.java.ExtinguishDevices;
 
-public class FrontCannon extends Cannon {
+public class FrontCannon {
     private FrontWaterStepsType steps;
     private MixDevice mixDevice;
-    public FrontCannon(MixDevice mix) {
+    public FrontCannon(MixDevice mixer) {
         this.steps = FrontWaterStepsType.one;
-        this.mixDevice = mix;
-    }
-
-    @Override
-    public void pumpOut() {
-        this.mixDevice.defill(steps.getValue());
-    }
-
-    public void setSteps(FrontWaterStepsType steps) {
-        this.steps = steps;
+        this.mixDevice = mixer;
     }
 }

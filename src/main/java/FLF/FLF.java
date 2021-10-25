@@ -25,6 +25,7 @@ public class FLF {
 
     private CentralUnit centralUnit;
 
+
     public FLF(Builder builder) {
         cabin = builder.cabin;
         centralUnit = builder.centralUnit;
@@ -33,7 +34,7 @@ public class FLF {
         iteration = builder.iteration;
     }
 
-public static class Builder{
+    public static class Builder{
         private long iteration;
         private double speed;
         private Cabin cabin;
