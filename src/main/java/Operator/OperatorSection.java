@@ -13,6 +13,11 @@ import java.util.HashMap;
 public class OperatorSection {
 
     final PositionType positionRelativeToControlPanel =PositionType.right;
+
+    public JoystickHeadCanon getJoystick() {
+        return joystick;
+    }
+
     private ControlPanel panel;
     private JoystickHeadCanon joystick;
     private Operator operator;

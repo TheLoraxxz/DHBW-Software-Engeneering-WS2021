@@ -14,7 +14,6 @@ public class PressureButton implements IFeeler {
 
     public PressureButton(PositionType pos, Cannon cannon) {
         position = pos;
-        this.cannon = cannon;
     }
 
     @Override

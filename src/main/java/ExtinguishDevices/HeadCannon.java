@@ -11,8 +11,8 @@ public class HeadCannon extends Cannon{
         super();
         this.steps = KnopRoofStepsType.a;
         segments = new Segments[]{
-                    new Segments(true),
-                    new Segments(false)};
+                new Segments(true),
+                new Segments(false)};
         this.mixDevice =mixing;
     }
 

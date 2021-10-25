@@ -4,7 +4,9 @@ import main.java.Driver.DriverSection;
 import main.java.Engine.ElectricMotor;
 import main.java.Engine.PivotStatic;
 import main.java.Engine.PivotTurnable;
-import main.java.ExtinguishDevices.*;
+import main.java.ExtinguishDevices.FrontCannon;
+import main.java.ExtinguishDevices.HeadCannon;
+import main.java.ExtinguishDevices.MixDevice;
 import main.java.Lights.*;
 import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
@@ -12,10 +14,10 @@ import main.java.Operator.SwitchType;
 import java.util.HashMap;
 
 public class CentralUnit {
+    private HashMap<SwitchType, Lights[]> lights;
 
     ElectricMotor[] motors;
 
-    private HashMap<SwitchType, Lights[]> lights;
     private BreakLight breakLight[];
     private TurnSignalLight turnSignalLight[];
 
@@ -122,8 +124,8 @@ public class CentralUnit {
         return (Lights[]) this.lights.get(SwitchType.BlueLights);
     }
 
-    public Lights[] getSideLights() {
-        return  this.lights.get(SwitchType.SideLights);
+    public HeadLight[] getSideLights() {
+        return (HeadLight[]) this.lights.get(SwitchType.SideLights);
     }
 
     public TurnSignalLight[] getTurnSignalLights() {

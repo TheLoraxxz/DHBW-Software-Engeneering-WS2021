@@ -26,11 +26,11 @@ public class DriverSection {
 
     private JoystickFrontCannon joystickFrontCannon;
 
-    public DriverSection(TurnSignalLight[] turnSignalLight) {
+    public DriverSection(TurnSignalLight[] turnLight) {
         relativePositionToControlPanel = PositionType.left;
         gasPedal = new GasPedal();
         breakPedal = new BreakPedal();
-        steeringWheel = new SteeringWheel(turnSignalLight);
+        steeringWheel = new SteeringWheel();
         joystickFrontCannon = new JoystickFrontCannon();
     }
 }

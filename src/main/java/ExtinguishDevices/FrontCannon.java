@@ -5,10 +5,10 @@ public class FrontCannon extends Cannon {
 
     private float tiltDegree;
     private MixDevice mixDevice;
-    public FrontCannon(MixDevice mix) {
+    public FrontCannon(MixDevice mixer) {
         this.tiltDegree = 0;
         this.steps = FrontWaterStepsType.one;
-        this.mixDevice = mix;
+        this.mixDevice = mixer;
     }
 
     @Override
