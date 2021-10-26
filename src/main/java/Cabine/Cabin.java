@@ -1,15 +1,19 @@
 package main.java.Cabine;
 
+import main.java.Driver.DriverSection;
 import main.java.FLF.FLF;
 import main.java.FLF.PositionType;
+import main.java.Operator.OperatorSection;
 
 public class Cabin {
-    private FLF flf;
 
-    public Cabin() {
+    public Cabin(DriverSection driver,OperatorSection operator) {
         busDoors = new BusDoor[]{new BusDoor(),new BusDoor()};
-        //this.flf = pflf;
-        seats = new Seat[]{new Seat(PositionType.frontleft),new Seat(PositionType.frontright),new Seat(PositionType.backleft), new Seat(PositionType.backright)};
+        seats = new Seat[]{
+            new Seat(PositionType.frontleft,driver),
+            new Seat(PositionType.frontright,operator),
+            new Seat(PositionType.backleft), 
+            new Seat(PositionType.backright)};
         energyDisplay = new EnergyDisplay();
         speedDisplay = new SpeedDisplay();
     }

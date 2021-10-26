@@ -43,8 +43,6 @@ public class FLF {
 
         public Builder()
         {
-            cabin = new Cabin();
-            centralUnit = new CentralUnit(this.speed,batteries);
             batteries = new Batteries[]{
                     new Batteries(),
                     new Batteries(),
@@ -52,6 +50,8 @@ public class FLF {
                     new Batteries()};
             speed = 0;
             iteration = 0;
+            centralUnit = new CentralUnit(this.speed,batteries);
+            cabin = new Cabin(centralUnit.getDriverSection(),centralUnit.getOperatorSection());
         }
 
         public FLF build()

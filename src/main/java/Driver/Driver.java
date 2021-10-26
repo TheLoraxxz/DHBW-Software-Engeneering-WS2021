@@ -18,4 +18,9 @@ public class Driver implements IDriver{
     public void pressBreakPedal() {
         driverSection.getBreakPedal().changeSpeed();
     }
+
+
+    public void sitDown(DriverSection section){
+        this.driverSection = section;    
+    }
 }

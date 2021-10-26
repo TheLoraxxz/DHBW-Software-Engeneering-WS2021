@@ -5,7 +5,7 @@ public class BusDoor {
 
     public BusDoor() {
         isOpen = false;
-        doorFeelers = new DoorFeeler[]{new DoorFeeler(),new DoorFeeler()};
+        doorFeelers = new DoorFeeler[]{new DoorFeeler(isOpen),new DoorFeeler(isOpen)};
     }
 
     public DoorFeeler[] getDoorFeelers() {
