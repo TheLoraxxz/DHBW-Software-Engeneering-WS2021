@@ -5,6 +5,7 @@ import main.java.Engine.PivotTurnable;
 import main.java.ExtinguishDevices.FrontCannon;
 import main.java.FLF.PositionType;
 import main.java.Lights.TurnSignalLight;
+import main.java.Person.Driver;
 
 public class DriverSection {
     private Driver driver;

@@ -5,6 +5,6 @@ import main.java.FLF.PositionType;
 
 public abstract class Person {
     public void openBusDoor(PositionType position,DoorFeeler feeler) {
-        feeler.press();
+        feeler.press(this);
     }
 }

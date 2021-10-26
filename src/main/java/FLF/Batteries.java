@@ -24,4 +24,7 @@ public class Batteries {
         }
         return false;
     }
+    public double getCapacity() {
+        return this.capacity;
+    }
 }
