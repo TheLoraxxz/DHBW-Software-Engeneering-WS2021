@@ -37,4 +37,10 @@ public class DriverSection {
         steeringWheel = new SteeringWheel(turnLight,pivotTurnable);
         joystickFrontCannon = new JoystickFrontCannon(cannon);
     }
+    public PositionType getPosition() {
+        return this.relativePositionToControlPanel;
+    }
+    public void setDriver(Driver person) {
+        this.driver = person;
+    }
 }

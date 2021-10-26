@@ -1,6 +1,5 @@
 package main.java.Cabine;
 
-import main.java.Joystick.IFeeler;
 import main.java.Person.Person;
 
 public class DoorFeeler implements IDoorFeeler{

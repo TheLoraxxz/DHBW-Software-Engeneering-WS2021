@@ -5,6 +5,8 @@ import main.java.FLF.PositionType;
 public class BusDoor {
     private boolean isOpen;
     private PositionType position;
+    private DoorFeeler[] doorFeelers;
+
     public BusDoor(PositionType position,Seat[] seats) {
         this.position = position;
         isOpen = false;
@@ -14,6 +16,8 @@ public class BusDoor {
     public DoorFeeler[] getDoorFeelers() {
         return doorFeelers;
     }
+    public PositionType getPositionType() {
+        return position;
+    }
 
-    private DoorFeeler[] doorFeelers;
 }

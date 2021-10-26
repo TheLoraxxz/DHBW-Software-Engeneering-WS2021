@@ -1,11 +1,10 @@
 package main.java.Cabine;
 
-import java.sql.Driver;
-import java.util.concurrent.ExecutionException;
 
 import main.java.Driver.DriverSection;
 import main.java.FLF.PositionType;
 import main.java.Operator.OperatorSection;
+import main.java.Person.Driver;
 import main.java.Person.Operator;
 import main.java.Person.Person;
 
@@ -43,16 +42,22 @@ public class Seat {
         if (this.person == null) {
             if (this.driver!=null && person instanceof Driver) {
                     Driver driverP = (Driver) person;
+                    driverP.sitDown(driver);
+                    driver.setDriver(driverP);
                     this.person = person;
 
             }
             if(this.operator!=null&&person instanceof Operator) {
                 Operator operatorP = (Operator) person;
                 operatorP.sitDown(operator);
+                operator.setOperator(operatorP);
                 this.person = person;
             }
         }
         return true;
 
+    }
+    public PositionType getPosition() {
+        return this.position;
     }
 }
