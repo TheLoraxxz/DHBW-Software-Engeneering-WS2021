@@ -19,38 +19,38 @@ public class PressureButton implements IFeeler {
     @Override
     public void press() {
         if (this.cannon instanceof FrontCannon) {
-           FrontCannon canon = (FrontCannon) this.cannon;
-           if (this.position == PositionType.left) {
-               switch (canon.getCannonState()) {
-                   case active -> canon.setCannonState(CannonState.inactive);
-                   case inactive -> canon.setCannonState(CannonState.active);
-               }
-           } else {
-               if (cannon.getCannonState()==CannonState.active) {
-                   canon.getMixDevice().setToNextMix();
-               }
-           }
-        } else {
-            HeadCannon canon = (HeadCannon) this.cannon;
-            if (this.position==PositionType.left) {
-                switch (cannon.getCannonState()) {
-                    case active ->
-                        canon.setCannonState(CannonState.inactive);
-                    case inactive->
-                        canon.setCannonState(CannonState.active);
+            FrontCannon canon = (FrontCannon) this.cannon;
+            if (this.position == PositionType.left) {
+                switch (canon.getCannonState()) {
+                case active -> canon.setCannonState(CannonState.inactive);
+                case inactive -> canon.setCannonState(CannonState.active);
+                default -> canon.setCannonState(CannonState.inactive);
                 }
             } else {
-                if (cannon.getCannonState()==CannonState.active) {
+                if (cannon.getCannonState() == CannonState.active) {
+                    canon.getMixDevice().setToNextMix();
+                }
+            }
+        } else {
+            HeadCannon canon = (HeadCannon) this.cannon;
+            if (this.position == PositionType.left) {
+                switch (cannon.getCannonState()) {
+                case active -> canon.setCannonState(CannonState.inactive);
+                case inactive -> canon.setCannonState(CannonState.active);
+                default -> canon.setCannonState(CannonState.inactive);
+                }
+            } else {
+                if (cannon.getCannonState() == CannonState.active) {
                     canon.getMixDevice().setToNextMix();
                 }
             }
         }
     }
 
-
     public PositionType getPosition() {
         return position;
     }
+
     public Cannon getCannon() {
         return cannon;
     }
