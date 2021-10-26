@@ -2,8 +2,26 @@ package main.java.ExtinguishDevices;
 
 public class MixDevice {
     private MixType mixType;
+    private WaterTank water;
+    private FoamTank foam;
 
-    public MixDevice() {
+    public MixDevice(WaterTank water,FoamTank foam) {
         this.mixType = MixType.zero;
+        this.water = water;
+        this.foam = foam;
+    }
+    public void defill(int amount) {
+        float foamV = amount*this.mixType.getValue();
+        float waterV = amount-foamV; 
+        this.water.defill(waterV);
+        this.foam.defill(foamV);
+    }
+    public void setToNextMix() {
+        switch(this.mixType){
+            case zero -> this.mixType = MixType.three;
+            case three -> this.mixType = MixType.five;
+            case five -> this.mixType = MixType.ten;
+            case ten -> this.mixType = MixType.zero;
+        }
     }
 }

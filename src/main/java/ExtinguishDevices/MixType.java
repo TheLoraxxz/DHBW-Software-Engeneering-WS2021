@@ -1,8 +1,15 @@
 package main.java.ExtinguishDevices;
 
 public enum MixType {
-    three,
-    five,
-    ten,
-    zero;
+    three(3),
+    five(5),
+    ten(10),
+    zero(0);
+    private int value;
+    private MixType(int value) {
+
+    }
+    public int getValue() {
+        return this.value;
+    }
 }

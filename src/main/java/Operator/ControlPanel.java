@@ -8,7 +8,7 @@ import main.java.Lights.Lights;
 import java.util.HashMap;
 
 public class ControlPanel {
-    public LightSwitch[] getSwitches() {
+    public LightSwitch[] getLightSwitches() {
         return switches;
     }
 

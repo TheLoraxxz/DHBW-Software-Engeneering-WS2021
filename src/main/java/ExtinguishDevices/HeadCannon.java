@@ -42,7 +42,7 @@ public class HeadCannon extends Cannon{
             }
         } else {
             for (PartSegments segment:this.segments[1].getPartSegments()) {
-                segment.movIn();
+                segment.moveIn();
             }
             this.segments[0].setTiltDegree(0);
         }

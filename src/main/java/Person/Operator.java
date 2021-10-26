@@ -49,6 +49,6 @@ public class Operator extends Person implements IOperator{
 
     public void UseControlPanelLightSwitch(SwitchType switchType)
     {
-        operatorSection.getPanel().getSwitches()[switchType].on();
+        operatorSection.getPanel().getLightSwitches()[switchType.getValue()].on();
     }
 }
