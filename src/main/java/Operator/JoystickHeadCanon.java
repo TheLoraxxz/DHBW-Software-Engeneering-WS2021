@@ -9,11 +9,9 @@ import main.java.Joystick.PressureButton;
 
 public class JoystickHeadCanon extends Joystick {
     
-    protected JoyStickFeeler feeler;
-    protected PressureButton[] buttons;
+    
     public JoystickHeadCanon(HeadCannon canon) {
-        super();
         feeler = new JoyStickFeeler(canon);
         buttons = new PressureButton[]{new PressureButton(PositionType.left,canon), new PressureButton(PositionType.right,canon)};
-    }
+    }   
 }

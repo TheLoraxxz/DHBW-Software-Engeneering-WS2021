@@ -1,15 +1,27 @@
 package main.java.Cabine;
 
 import main.java.Joystick.IFeeler;
+import main.java.Person.Person;
 
-public class DoorFeeler implements IFeeler{
+public class DoorFeeler implements IDoorFeeler{
     private boolean isOpen;
-    public DoorFeeler(boolean open) {
+    private boolean isInside;
+    private Seat[] seats;
+    public DoorFeeler(boolean open,boolean position,Seat[] seats) {
+        this.isInside = position;
         isOpen = open;
+        this.seats = seats;
     }
     @Override
-    public void press() {
-        isOpen = !isOpen;
+    public void press(Person person) {
+        if(!isInside) {
+            isOpen = !isOpen;
+        } else {
+            if(seats.equals(person)) {
+                isOpen = !isOpen;
+            }
+        }
+        
         
     }
 }

@@ -14,6 +14,7 @@ public class ElectroMotorSwitch extends Switch{
     public void on() {
         this.motor[0].setOn(true);
         this.motor[1].setOn(true);
+        this.on = true;
 
     }
 
@@ -21,6 +22,6 @@ public class ElectroMotorSwitch extends Switch{
     public void off() {
         this.motor[0].setOn(false);
         this.motor[1].setOn(false);
-
+        this.on = false;
     }
 }
