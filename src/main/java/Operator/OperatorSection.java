@@ -24,7 +24,7 @@ public class OperatorSection {
 
     public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor, MixDevice mixing) {
         this.panel = new ControlPanel(front,head,lights,motor);
-        this.joystick = new JoystickHeadCanon(head,mixing);
+        this.joystick = new JoystickHeadCanon(head);
     }
 
 

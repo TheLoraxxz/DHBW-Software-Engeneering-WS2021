@@ -1,5 +1,8 @@
 package main.java.Driver;
 
+import main.java.Engine.ElectricMotor;
+import main.java.Engine.PivotTurnable;
+import main.java.ExtinguishDevices.FrontCannon;
 import main.java.FLF.PositionType;
 import main.java.Lights.TurnSignalLight;
 
@@ -26,11 +29,11 @@ public class DriverSection {
 
     private JoystickFrontCannon joystickFrontCannon;
 
-    public DriverSection(TurnSignalLight[] turnLight) {
+    public DriverSection(TurnSignalLight[] turnLight,PivotTurnable[] pivotTurnable,double speed,ElectricMotor[] motors,FrontCannon cannon) {
         relativePositionToControlPanel = PositionType.left;
-        gasPedal = new GasPedal();
-        breakPedal = new BreakPedal();
-        steeringWheel = new SteeringWheel(turnLight);
-        joystickFrontCannon = new JoystickFrontCannon();
+        gasPedal = new GasPedal(speed,motors);
+        breakPedal = new BreakPedal(speed,motors);
+        steeringWheel = new SteeringWheel(turnLight,pivotTurnable);
+        joystickFrontCannon = new JoystickFrontCannon(cannon);
     }
 }

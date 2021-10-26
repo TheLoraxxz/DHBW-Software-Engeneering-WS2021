@@ -44,7 +44,7 @@ public class FLF {
         public Builder()
         {
             cabin = new Cabin();
-            centralUnit = new CentralUnit();
+            centralUnit = new CentralUnit(this.speed,batteries);
             batteries = new Batteries[]{
                     new Batteries(),
                     new Batteries(),
