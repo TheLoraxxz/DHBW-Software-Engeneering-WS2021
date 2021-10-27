@@ -2,7 +2,6 @@ package main.java.Person;
 
 import main.java.ExtinguishDevices.FrontWaterStepsType;
 import main.java.ExtinguishDevices.KnopRoofStepsType;
-import main.java.FLF.PositionType;
 import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
 

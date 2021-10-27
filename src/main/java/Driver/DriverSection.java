@@ -43,4 +43,7 @@ public class DriverSection {
     public void setDriver(Driver person) {
         this.driver = person;
     }
+    public Driver getDriver() {
+        return driver;
+    }
 }

@@ -1,7 +1,5 @@
 package main.java.Joystick;
 
-import main.java.FLF.PositionType;
-
 public abstract class Joystick {
     protected JoyStickFeeler feeler;
     protected PressureButton[] buttons;

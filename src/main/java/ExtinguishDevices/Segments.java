@@ -27,5 +27,8 @@ public class Segments {
         }
         return null;
     }
-
+    
+    public float getTiltDegree() {
+        return tiltDegree;
+    }
 }

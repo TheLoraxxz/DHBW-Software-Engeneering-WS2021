@@ -1,7 +1,6 @@
 package main.java.Operator;
 
 import main.java.ExtinguishDevices.HeadCannon;
-import main.java.ExtinguishDevices.MixDevice;
 import main.java.FLF.PositionType;
 import main.java.Joystick.JoyStickFeeler;
 import main.java.Joystick.Joystick;

@@ -1,10 +1,5 @@
 package main.java.Operator;
 
-import main.java.Engine.ElectricMotor;
-import main.java.Lights.Lights;
-
-import java.util.HashMap;
-
 public abstract class Switch {
 
     protected SwitchType switchTypeOperation;

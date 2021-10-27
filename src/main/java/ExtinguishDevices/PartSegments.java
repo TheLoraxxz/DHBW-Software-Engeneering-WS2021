@@ -13,4 +13,7 @@ public class PartSegments {
     public void moveIn() {
         this.shownLength =0;    
     }
+    public int getShownLength() {
+        return shownLength;
+    }
 }

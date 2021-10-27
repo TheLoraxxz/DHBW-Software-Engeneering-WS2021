@@ -4,38 +4,38 @@ import main.java.Cabine.Cabin;
 
 public class FLF {
 
-    private long iteration;
     private double speed;
+
+    private CentralUnit centralUnit;
+    private Cabin cabin;
+    private Batteries[] batteries;
 
     public Cabin getCabin() {
         return cabin;
     }
 
-    private Cabin cabin;
 
     public Batteries[] getBatteries() {
         return batteries;
     }
 
-    private Batteries[] batteries;
 
     public CentralUnit getCentralUnit() {
         return centralUnit;
     }
 
-    private CentralUnit centralUnit;
-
+    public double getSpeed() {
+        return speed;
+    }
 
     public FLF(Builder builder) {
         cabin = builder.cabin;
         centralUnit = builder.centralUnit;
         batteries = builder.batteries;
         speed = builder.speed;
-        iteration = builder.iteration;
     }
 
     public static class Builder{
-        private long iteration;
         private double speed;
         private Cabin cabin;
         private CentralUnit centralUnit;
@@ -49,7 +49,6 @@ public class FLF {
                     new Batteries(),
                     new Batteries()};
             speed = 0;
-            iteration = 0;
             centralUnit = new CentralUnit(this.speed,batteries);
             cabin = new Cabin(centralUnit.getDriverSection(),centralUnit.getOperatorSection(),batteries,speed);
         }

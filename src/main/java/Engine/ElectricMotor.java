@@ -4,11 +4,9 @@ import main.java.FLF.Batteries;
 import main.java.FLF.Status;
 
 public class ElectricMotor {
-    private boolean isOn;
     private Batteries[] battery;
-
+    
     public ElectricMotor(Batteries[] battery) {
-        isOn = false;
         this.battery = battery;
     }
 

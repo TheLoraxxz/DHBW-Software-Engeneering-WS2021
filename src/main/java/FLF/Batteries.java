@@ -6,7 +6,7 @@ public class Batteries {
 
     public Batteries() {
         this.capacity = 100000;
-        status = status.idle;
+        status = Status.idle;
     }
     public void turnOn() {
         status = Status.use;
