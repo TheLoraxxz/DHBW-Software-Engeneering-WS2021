@@ -95,7 +95,7 @@ public class CentralUnit {
         pivotsStatic = new PivotStatic[]{new PivotStatic(), new PivotStatic()};
         pivotsTurnable = new PivotTurnable[]{new PivotTurnable(), new PivotTurnable()};
 
-        driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon);
+        driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon,breakLight);
         operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer);
     }
 

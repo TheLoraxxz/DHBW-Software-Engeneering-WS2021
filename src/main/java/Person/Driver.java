@@ -14,15 +14,24 @@ public class Driver extends Person implements IDriver{
     @Override
     public void pressGasPedal() {
         if(this.section!=null) {
-            this.section.getGasPedal().changeSpeed();
+            this.section.getGasPedal().press();
+            this.section.getGasPedal().release();
         }
     }
 
     @Override
     public void pressBreakPedal() {
         if(this.section!=null) {
-            this.section.getBreakPedal().changeSpeed();
+            this.section.getBreakPedal().press();
         }
+    }
+
+    @Override
+    public void releaseBreakPedal() {
+        if(this.section!=null) {
+            this.section.getBreakPedal().release();
+        }
+        
     }
 
     @Override
@@ -55,4 +64,6 @@ public class Driver extends Person implements IDriver{
     public void tiltJoystick(int[] axis) {
 
     }
+
+
 }

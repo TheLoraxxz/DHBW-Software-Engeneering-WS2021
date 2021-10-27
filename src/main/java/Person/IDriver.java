@@ -7,4 +7,5 @@ public interface IDriver extends IFLFOperator{
     public void sitDown(DriverSection section);
     public void pressGasPedal();
     public void pressBreakPedal();
+    public void releaseBreakPedal();
 }

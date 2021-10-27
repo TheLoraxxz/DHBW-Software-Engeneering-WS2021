@@ -1,5 +1,6 @@
 package main.java.Driver;
 
 public interface IPedal {
-    public void changeSpeed();
+    public void press();
+    public void release();
 }
