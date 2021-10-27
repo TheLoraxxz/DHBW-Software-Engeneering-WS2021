@@ -9,5 +9,8 @@ public class WarningLight extends Lights{
         this.position = pos;
         this.led = new LED();
     }
+    public LED getLed() {
+        return led;
+    }
 
 }

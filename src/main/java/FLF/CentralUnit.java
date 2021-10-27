@@ -36,7 +36,7 @@ public class CentralUnit {
 
 
     private GroundSprayNozzles[] groundSprayNozzles;
-    public CentralUnit() {
+    public CentralUnit(double speed,Batteries[] battery) {
         this.lights = new HashMap<>();
         this.lights.put(SwitchType.SideLights, new Lights[10]); //creating the ten side Lights
         this.lights.put(SwitchType.headLightsFront, new Lights[6]); // creating the 6 front lights
@@ -77,10 +77,12 @@ public class CentralUnit {
         this.lights.get(SwitchType.warningLights)[0] = new WarningLight(PositionType.fronlefttop);
         this.lights.get(SwitchType.warningLights)[1] = new WarningLight(PositionType.backrighttop);
         //turnseignalLights
-        this.turnSignalLight = new TurnSignalLight[]{new TurnSignalLight(PositionType.frontleftbottom),
-                new TurnSignalLight(PositionType.frontrightbottom),
-                new TurnSignalLight(PositionType.backleftbottom),
-                new TurnSignalLight(PositionType.backrightbottom)};
+        this.turnSignalLight = new TurnSignalLight[]{
+            new TurnSignalLight(PositionType.frontleftbottom),
+            new TurnSignalLight(PositionType.frontrightbottom),
+            new TurnSignalLight(PositionType.backleftbottom),
+            new TurnSignalLight(PositionType.backrightbottom)
+        };
         this.breakLight = new BreakLight[]{new BreakLight(PositionType.backleftbottom),new BreakLight(PositionType.backrightbottom)};
         // LIghts finished
         this.groundSprayNozzles = new GroundSprayNozzles[]{new GroundSprayNozzles(),new GroundSprayNozzles()};
@@ -89,11 +91,11 @@ public class CentralUnit {
         MixDevice mixer = new MixDevice(tank1,tank2);
         frontCannon = new FrontCannon(mixer);
         headCannon = new HeadCannon(mixer);
-        this.motors = new ElectricMotor[2];
+        this.motors = new ElectricMotor[]{new ElectricMotor(battery),new ElectricMotor(battery)};
         pivotsStatic = new PivotStatic[]{new PivotStatic(), new PivotStatic()};
         pivotsTurnable = new PivotTurnable[]{new PivotTurnable(), new PivotTurnable()};
 
-        driverSection = new DriverSection(this.turnSignalLight);
+        driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon,breakLight);
         operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer);
     }
 

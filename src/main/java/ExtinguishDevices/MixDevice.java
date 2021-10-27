@@ -24,4 +24,10 @@ public class MixDevice {
             case ten -> this.mixType = MixType.zero;
         }
     }
+    public WaterTank getWaterTank() {
+        return this.water;
+    }
+    public FoamTank getFoamTank() {
+        return this.foam;
+    }
 }
