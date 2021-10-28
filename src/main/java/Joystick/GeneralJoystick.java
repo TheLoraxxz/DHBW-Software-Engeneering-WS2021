@@ -8,7 +8,7 @@ public class GeneralJoystick extends Joystick {
     private JoystickStateClass state;
     private FrontCannon front;
     private HeadCannon head;
-    GeneralJoystick(FrontCannon front, HeadCannon head) {
+    public GeneralJoystick(FrontCannon front, HeadCannon head) {
         this.state = new JoystickStateClass();
         this.buttons = new PressureButton[] { new GeneralPressureButton(head, front, this.state) };
         this.feeler = new GeneralJoystickFeeler(head, front, state);

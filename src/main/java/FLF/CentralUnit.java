@@ -10,6 +10,7 @@ import main.java.ExtinguishDevices.GroundSprayNozzles;
 import main.java.ExtinguishDevices.HeadCannon;
 import main.java.ExtinguishDevices.MixDevice;
 import main.java.ExtinguishDevices.WaterTank;
+import main.java.Joystick.GeneralJoystick;
 import main.java.Lights.*;
 import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
@@ -36,7 +37,7 @@ public class CentralUnit {
 
 
     private GroundSprayNozzles[] groundSprayNozzles;
-    public CentralUnit(double speed,Batteries[] battery) {
+    public CentralUnit(double speed,Batteries[] battery,JoystickType type) {
         this.lights = new HashMap<>();
         this.lights.put(SwitchType.SideLights, new Lights[10]); //creating the ten side Lights
         this.lights.put(SwitchType.headLightsFront, new Lights[6]); // creating the 6 front lights
@@ -94,9 +95,15 @@ public class CentralUnit {
         this.motors = new ElectricMotor[]{new ElectricMotor(battery),new ElectricMotor(battery)};
         pivotsStatic = new PivotStatic[]{new PivotStatic(), new PivotStatic()};
         pivotsTurnable = new PivotTurnable[]{new PivotTurnable(), new PivotTurnable()};
-
-        driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon,breakLight);
-        operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer);
+        if(type==JoystickType.seperate) {
+            driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon,breakLight,null);
+            operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,null);
+        } else {
+            GeneralJoystick joystick = new GeneralJoystick(frontCannon,headCannon);
+            driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon,breakLight,joystick);
+            operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,joystick);
+        }
+        
     }
 
     public DriverSection getDriverSection() {

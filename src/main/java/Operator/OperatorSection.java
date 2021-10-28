@@ -5,6 +5,8 @@ import main.java.ExtinguishDevices.FrontCannon;
 import main.java.ExtinguishDevices.HeadCannon;
 import main.java.ExtinguishDevices.MixDevice;
 import main.java.FLF.PositionType;
+import main.java.Joystick.GeneralJoystick;
+import main.java.Joystick.Joystick;
 import main.java.Lights.Lights;
 import main.java.Person.Operator;
 
@@ -14,17 +16,27 @@ public class OperatorSection {
 
     final PositionType positionRelativeToControlPanel =PositionType.right;
 
-    public JoystickHeadCanon getJoystick() {
-        return joystick;
+    public Joystick getJoystick() {
+        if(joystick!=null) {
+            return joystick;
+        } else {
+            return gJoystick;
+        }
     }
 
     private ControlPanel panel;
     private JoystickHeadCanon joystick;
+    private GeneralJoystick gJoystick;
     private Operator operator;
 
-    public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor, MixDevice mixing) {
+    public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor, MixDevice mixing,Joystick joystick) {
         this.panel = new ControlPanel(front,head,lights,motor);
-        this.joystick = new JoystickHeadCanon(head);
+        if(this.joystick==null) {
+            this.joystick = new JoystickHeadCanon(head);
+        } else {
+            this.gJoystick = (GeneralJoystick) joystick;
+        }
+        
     }
 
 
