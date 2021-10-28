@@ -4,6 +4,8 @@ import main.java.Engine.ElectricMotor;
 import main.java.Engine.PivotTurnable;
 import main.java.ExtinguishDevices.FrontCannon;
 import main.java.FLF.PositionType;
+import main.java.Joystick.GeneralJoystick;
+import main.java.Joystick.Joystick;
 import main.java.Lights.BreakLight;
 import main.java.Lights.TurnSignalLight;
 import main.java.Person.Driver;
@@ -11,32 +13,23 @@ import main.java.Person.Driver;
 public class DriverSection {
     private Driver driver;
     private GasPedal gasPedal;
-    public GasPedal getGasPedal() {
-        return gasPedal;
-    }
-
-    private BreakPedal breakPedal;
-    public BreakPedal getBreakPedal() {
-        return breakPedal;
-    }
     private PositionType relativePositionToControlPanel;
     private SteeringWheel steeringWheel;
-    public SteeringWheel getSteeringWheel() {
-        return steeringWheel;
-    }
-
-    public JoystickFrontCannon getJoystickFrontCannon() {
-        return joystickFrontCannon;
-    }
-
+    private BreakPedal breakPedal;
     private JoystickFrontCannon joystickFrontCannon;
+    private GeneralJoystick joystick;
 
-    public DriverSection(TurnSignalLight[] turnLight,PivotTurnable[] pivotTurnable,double speed,ElectricMotor[] motors,FrontCannon cannon,BreakLight[] breaklight) {
+    public DriverSection(TurnSignalLight[] turnLight,PivotTurnable[] pivotTurnable,double speed,ElectricMotor[] motors,FrontCannon cannon,BreakLight[] breaklight,Joystick joystick) {
         relativePositionToControlPanel = PositionType.left;
         gasPedal = new GasPedal(speed,motors);
         breakPedal = new BreakPedal(speed,motors,breaklight);
         steeringWheel = new SteeringWheel(turnLight,pivotTurnable);
-        joystickFrontCannon = new JoystickFrontCannon(cannon);
+        if(joystick == null) {
+            joystickFrontCannon = new JoystickFrontCannon(cannon);
+        } else {
+            this.joystick = (GeneralJoystick) joystick;
+        }
+        
     }
     public PositionType getPosition() {
         return this.relativePositionToControlPanel;
@@ -46,5 +39,27 @@ public class DriverSection {
     }
     public Driver getDriver() {
         return driver;
+    }
+
+    public GasPedal getGasPedal() {
+        return gasPedal;
+    }
+
+
+    public BreakPedal getBreakPedal() {
+        return breakPedal;
+    }
+
+    public SteeringWheel getSteeringWheel() {
+        return steeringWheel;
+    }
+
+    public Joystick getJoystickFrontCannon() {
+        if(joystickFrontCannon!=null) {
+            return joystickFrontCannon;
+        } else {
+            return joystick;
+        }
+        
     }
 }

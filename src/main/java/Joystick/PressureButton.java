@@ -10,7 +10,7 @@ public class PressureButton implements IFeeler {
 
     private PositionType position;
 
-    private Cannon cannon;
+    protected Cannon cannon;
 
     public PressureButton(PositionType pos, Cannon cannon) {
         position = pos;

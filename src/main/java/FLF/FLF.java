@@ -40,19 +40,20 @@ public class FLF {
         private Cabin cabin;
         private CentralUnit centralUnit;
         private Batteries[] batteries;
-
-        public Builder()
-        {
+        private static JoystickType types = JoystickType.seperate;
+        public Builder() {
             batteries = new Batteries[]{
                     new Batteries(),
                     new Batteries(),
                     new Batteries(),
                     new Batteries()};
             speed = 0;
-            centralUnit = new CentralUnit(this.speed,batteries);
+            centralUnit = new CentralUnit(this.speed,batteries,types);
             cabin = new Cabin(centralUnit.getDriverSection(),centralUnit.getOperatorSection(),batteries,speed);
         }
-
+        public static void setJoystickType(JoystickType type) {
+            types = type;
+        }
         public FLF build()
         {
             return new FLF(this);

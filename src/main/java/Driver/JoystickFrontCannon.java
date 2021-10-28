@@ -8,9 +8,6 @@ import main.java.Joystick.PressureButton;
 
 public class JoystickFrontCannon extends Joystick{
 
-    protected JoyStickFeeler feeler;
-    protected PressureButton[] buttons;
-    
     public JoystickFrontCannon(FrontCannon canon) {
         super();
 

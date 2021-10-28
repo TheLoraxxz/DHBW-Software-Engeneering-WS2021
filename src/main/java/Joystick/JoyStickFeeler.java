@@ -5,7 +5,7 @@ import main.java.ExtinguishDevices.CannonState;
 
 public class JoyStickFeeler implements IFeeler{
 
-    private Cannon canon;
+    protected Cannon canon;
 
     public JoyStickFeeler(Cannon canon) {
         this.canon = canon;
