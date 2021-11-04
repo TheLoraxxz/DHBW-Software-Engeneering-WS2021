@@ -5,7 +5,7 @@ import main.java.ExtinguishDevices.KnopRoofStepsType;
 import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
 
-public class Operator extends Person implements IOperator{
+public class Operator extends FLFOperator{
     OperatorSection operatorSection;
     @Override
     public void pressJoystickRight() {
@@ -35,7 +35,6 @@ public class Operator extends Person implements IOperator{
         //The_Loraxxz komplex aufgabe :D :O
     }
 
-    @Override
     public void pressSwitch(SwitchType switchType) {
         if(this.operatorSection!=null) {
             if(switchType==SwitchType.electroMotor) {
@@ -55,14 +54,12 @@ public class Operator extends Person implements IOperator{
         }
     }
 
-    @Override
     public void changeHeadKnobToType(KnopRoofStepsType type) {
         if(this.operatorSection!= null) {
             this.operatorSection.getPanel().getKnobRoof().changeStep(type);
         }
     }
 
-    @Override
     public void changeFrontKnobToType(FrontWaterStepsType type) {
         if(operatorSection!=null) {
             this.operatorSection.getPanel().getKnobFront().changeStep(type);
@@ -70,7 +67,6 @@ public class Operator extends Person implements IOperator{
         
     }
 
-    @Override
     public void sitDown(OperatorSection section) {
         this.operatorSection = section;
     }

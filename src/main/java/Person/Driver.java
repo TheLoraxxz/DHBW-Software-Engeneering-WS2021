@@ -2,16 +2,15 @@ package main.java.Person;
 
 import main.java.Driver.DriverSection;
 
-public class Driver extends Person implements IDriver{
+public class Driver extends FLFOperator{
     private DriverSection section;
-    @Override
+
     public void turnWheel(float degree) {
         if(this.section!=null) {
             this.section.getSteeringWheel().turn(degree);
         }
     }
 
-    @Override
     public void pressGasPedal() {
         if(this.section!=null) {
             this.section.getGasPedal().press();
@@ -19,14 +18,12 @@ public class Driver extends Person implements IDriver{
         }
     }
 
-    @Override
     public void pressBreakPedal() {
         if(this.section!=null) {
             this.section.getBreakPedal().press();
         }
     }
 
-    @Override
     public void releaseBreakPedal() {
         if(this.section!=null) {
             this.section.getBreakPedal().release();
@@ -34,7 +31,6 @@ public class Driver extends Person implements IDriver{
         
     }
 
-    @Override
     public void sitDown(DriverSection section) {
         this.section = section;
     }
