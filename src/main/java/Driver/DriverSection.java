@@ -19,10 +19,10 @@ public class DriverSection {
     private JoystickFrontCannon joystickFrontCannon;
     private GeneralJoystick joystick;
 
-    public DriverSection(TurnSignalLight[] turnLight,PivotTurnable[] pivotTurnable,double speed,ElectricMotor[] motors,FrontCannon cannon,BreakLight[] breaklight,Joystick joystick) {
+    public DriverSection(TurnSignalLight[] turnLight,PivotTurnable[] pivotTurnable,ElectricMotor[] motors,FrontCannon cannon,BreakLight[] breaklight,Joystick joystick) {
         relativePositionToControlPanel = PositionType.left;
-        gasPedal = new GasPedal(speed,motors);
-        breakPedal = new BreakPedal(speed,motors,breaklight);
+        gasPedal = new GasPedal(pivotTurnable[0],motors);
+        breakPedal = new BreakPedal(pivotTurnable[0],motors,breaklight);
         steeringWheel = new SteeringWheel(turnLight,pivotTurnable);
         if(joystick == null) {
             joystickFrontCannon = new JoystickFrontCannon(cannon);

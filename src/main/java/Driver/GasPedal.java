@@ -1,22 +1,26 @@
 package main.java.Driver;
 
 import main.java.Engine.ElectricMotor;
+import main.java.Engine.Pivot;
 
 public class GasPedal implements IPedal{
 
-    private double speed;
+    private Pivot pivot;
     private ElectricMotor[] motors;
 
-    public GasPedal(double speed, ElectricMotor[] motors) {
-
+    public GasPedal(Pivot pivot, ElectricMotor[] motors) {
+        this.motors = motors;
+        this.pivot = pivot;
     }
     @Override
     public void press() {
-        this.speed = speed+4;
-        this.motors[0].consumeEnergy(speed);
-        this.motors[1].consumeEnergy(speed);
+        this.pivot.setSpeed(this.pivot.getSpeed()+4);
+        this.motors[0].changeSpeed(this.pivot.getSpeed());
+        this.motors[1].changeSpeed(this.pivot.getSpeed());
     }
     @Override
-    public void release() {        
+    public void release() { 
+        this.motors[0].changeSpeed(this.pivot.getSpeed());
+        this.motors[1].changeSpeed(this.pivot.getSpeed());       
     }
 }

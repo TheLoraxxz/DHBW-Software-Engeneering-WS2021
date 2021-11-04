@@ -1,13 +1,15 @@
 package main.java.Cabine;
 
+import main.java.Engine.Pivot;
+
 public class SpeedDisplay implements IDisplay{
-    private double speed;
-    public SpeedDisplay(double speed) {
-        this.speed = speed;
+    private Pivot pivot;
+    public SpeedDisplay(Pivot pivot) {
+        this.pivot = pivot;
     }
     @Override
     public String show() {
         
-        return speed+"km/h";
+        return pivot.getSpeed()+"km/h";
     }
 }

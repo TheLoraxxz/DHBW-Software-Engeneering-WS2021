@@ -1,14 +1,15 @@
 package main.java.Driver;
 
 import main.java.Engine.ElectricMotor;
+import main.java.Engine.Pivot;
 import main.java.Lights.BreakLight;
 
 public class BreakPedal implements IPedal{
-    private double speed;
+    private Pivot pivot;
     private ElectricMotor[] motors;
     private BreakLight[] lights;
-    public BreakPedal(double speed, ElectricMotor[] motors,BreakLight[] lights) {
-        this.speed = speed;
+    public BreakPedal(Pivot pivot, ElectricMotor[] motors,BreakLight[] lights) {
+        this.pivot = pivot;
         this.motors = motors;
         this.lights = lights;
     }
@@ -18,9 +19,9 @@ public class BreakPedal implements IPedal{
         for (BreakLight breakLight : lights) {
             breakLight.on();
         }
-        this.speed = speed-4;
-        this.motors[0].consumeEnergy(speed);
-        this.motors[1].consumeEnergy(speed);
+        this.pivot.setSpeed(this.pivot.getSpeed()-4);
+        this.motors[0].changeSpeed(this.pivot.getSpeed());
+        this.motors[1].changeSpeed(this.pivot.getSpeed());
 
         
     }
@@ -29,6 +30,8 @@ public class BreakPedal implements IPedal{
     public void release() {
         for (BreakLight breakLight : lights) {
             breakLight.off();
-        }        
+        }
+        this.motors[0].changeSpeed(this.pivot.getSpeed());
+        this.motors[1].changeSpeed(this.pivot.getSpeed());          
     }
 }

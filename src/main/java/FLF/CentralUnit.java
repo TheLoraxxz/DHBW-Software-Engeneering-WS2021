@@ -37,7 +37,7 @@ public class CentralUnit {
 
 
     private GroundSprayNozzles[] groundSprayNozzles;
-    public CentralUnit(double speed,Batteries[] battery,JoystickType type) {
+    public CentralUnit(Box box,JoystickType type) {
         this.lights = new HashMap<>();
         this.lights.put(SwitchType.SideLights, new Lights[10]); //creating the ten side Lights
         this.lights.put(SwitchType.headLightsFront, new Lights[6]); // creating the 6 front lights
@@ -92,15 +92,15 @@ public class CentralUnit {
         MixDevice mixer = new MixDevice(tank1,tank2);
         frontCannon = new FrontCannon(mixer);
         headCannon = new HeadCannon(mixer);
-        this.motors = new ElectricMotor[]{new ElectricMotor(battery),new ElectricMotor(battery)};
+        this.motors = new ElectricMotor[]{new ElectricMotor(box),new ElectricMotor(box)};
         pivotsStatic = new PivotStatic[]{new PivotStatic(), new PivotStatic()};
         pivotsTurnable = new PivotTurnable[]{new PivotTurnable(), new PivotTurnable()};
         if(type==JoystickType.seperate) {
-            driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon,breakLight,null);
+            driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,this.motors,frontCannon,breakLight,null);
             operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,null);
         } else {
             GeneralJoystick joystick = new GeneralJoystick(frontCannon,headCannon);
-            driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,speed,this.motors,frontCannon,breakLight,joystick);
+            driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,this.motors,frontCannon,breakLight,joystick);
             operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,joystick);
         }
         

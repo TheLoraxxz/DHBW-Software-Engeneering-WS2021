@@ -1,6 +1,7 @@
 package main.java.Engine;
 
 public abstract class Pivot {
+    private static long speed;
     public BreakDisk[] getBreakDisks() {
         return breakDisks;
     }
@@ -15,11 +16,18 @@ public abstract class Pivot {
 
 
     public Pivot() {
+        this.speed =0;
         breakDisks = new BreakDisk[6];
         for (int i = 0; i<6; i++)
         {
             breakDisks[i] = new BreakDisk();
         }
         wheels = new Wheel[]{new Wheel(),new Wheel()};
+    }
+    public long getSpeed() {
+        return Pivot.speed;
+    }
+    public void setSpeed(long speed) {
+        Pivot.speed = speed;
     }
 }

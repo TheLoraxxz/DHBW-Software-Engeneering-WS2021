@@ -1,37 +1,31 @@
 package main.java.Engine;
 
-import main.java.FLF.Batteries;
+import main.java.FLF.Box;
 import main.java.FLF.Status;
 
 public class ElectricMotor {
-    private Batteries[] battery;
+    private Box box;
     
-    public ElectricMotor(Batteries[] battery) {
-        this.battery = battery;
+    public ElectricMotor(Box box) {
+        this.box = box;
     }
 
-    public void consumeEnergy(double speed) {
-        try {
-            for (Batteries batteries : battery) {
-                if (batteries.getStatus() == Status.use) {
-                    double amountPerBattery = 12.5 * speed / 4;
-                    if (!batteries.consume(amountPerBattery)) {
-                        throw new Exception("Batteries empty!");
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void changeSpeed(double speed) {
+        if(box.getStatus() == Status.use) {
+            box.takeOut(speed*12.5);
         }
     }
 
     public void setOn(boolean on) {
-        for (Batteries batteries : battery) {
-            batteries.turnOn();
+        if(on) {
+            box.turnOn();
+        } else {
+            box.turnOf();
         }
+        
     }
 
     public boolean isOn() {
-        return battery[0].getStatus() == Status.use;
+        return box.getStatus()==Status.use;
     }
 }
