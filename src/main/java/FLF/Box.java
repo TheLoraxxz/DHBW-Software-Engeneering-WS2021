@@ -41,4 +41,7 @@ public class Box {
         }
         return cap;
     }
+    public Battery[] getBatteries() {
+        return batteries;
+    }
 }

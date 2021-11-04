@@ -27,7 +27,8 @@ public class TestApplication {
         //flfS
         assertNotNull(flf.getCabin());
         assertNotNull(flf.getCentralUnit());
-        assertEquals(4,flf.getBatteries().length);
+        assertNotNull(flf.getBatteries());
+        assertEquals(4,flf.getBatteries().getBatteries().length);
         //Cabine
         assertEquals(4,flf.getCabin().getSeats().length);
         for (Seat s:flf.getCabin().getSeats()) {
@@ -50,13 +51,13 @@ public class TestApplication {
             {
                 if (flf.getCentralUnit().getBlueLights()[i] instanceof BlueLight)
                  switch(i){
-                    case 0:assertEquals(2,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).length);
+                    case 0:assertEquals(2,((BlueLight[])flf.getCentralUnit().getBlueLights()).length);
                     case 1:assertEquals(1,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
-                    case 2:assertEquals(4,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).length);
+                    case 2:assertEquals(4,((BlueLight[])flf.getCentralUnit().getBlueLights()).length);
                     case 3:
                     case 4:
                     case 5:assertEquals(4,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
-                    case 6:assertEquals(4,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).length);
+                    case 6:assertEquals(4,((BlueLight[])flf.getCentralUnit().getBlueLights()).length);
                     case 7:
                     case 8:
                     case 9:assertEquals(2,((BlueLight)flf.getCentralUnit().getBlueLights()[i]).getLeds().length);break;
