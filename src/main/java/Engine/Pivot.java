@@ -16,7 +16,7 @@ public abstract class Pivot {
 
 
     public Pivot() {
-        this.speed =0;
+        Pivot.speed =0;
         breakDisks = new BreakDisk[6];
         for (int i = 0; i<6; i++)
         {
