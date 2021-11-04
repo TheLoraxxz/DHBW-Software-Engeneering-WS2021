@@ -3,7 +3,7 @@ package main.java.Lights;
 public class LED {
     private boolean isOn;
 
-    LED() {
+    public LED() {
         this.isOn=false;
     }
 

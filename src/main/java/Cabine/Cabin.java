@@ -7,10 +7,10 @@ import main.java.Operator.OperatorSection;
 
 public class Cabin {
 
-    public Cabin(DriverSection driver,OperatorSection operator,Batteries[] batteries,double speed) {
+    public Cabin(DriverSection driverSection,OperatorSection operatorSection,Batteries[] batteries,double speed) {
         seats = new Seat[]{
-            new Seat(PositionType.frontleft,driver),
-            new Seat(PositionType.frontright,operator),
+            new Seat(PositionType.frontleft,driverSection),
+            new Seat(PositionType.frontright,operatorSection),
             new Seat(PositionType.backleft), 
             new Seat(PositionType.backright)};
         busDoors = new BusDoor[]{new BusDoor(PositionType.left,seats),new BusDoor(PositionType.right,seats)};
