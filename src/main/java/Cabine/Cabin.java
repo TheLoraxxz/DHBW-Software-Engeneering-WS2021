@@ -3,7 +3,6 @@ package main.java.Cabine;
 
 import main.java.Driver.DriverSection;
 import main.java.Engine.Pivot;
-import main.java.FLF.Battery;
 import main.java.FLF.Box;
 import main.java.FLF.PositionType;
 import main.java.Operator.OperatorSection;

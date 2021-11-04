@@ -1,6 +1,5 @@
 package main.java.Cabine;
 
-import main.java.FLF.Battery;
 import main.java.FLF.Box;
 
 public class EnergyDisplay implements IDisplay{
