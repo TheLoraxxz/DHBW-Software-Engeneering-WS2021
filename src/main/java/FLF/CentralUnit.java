@@ -20,7 +20,11 @@ import java.util.HashMap;
 public class CentralUnit {
     private HashMap<SwitchType, Lights[]> lights;
 
-    ElectricMotor[] motors;
+    public ElectricMotor[] getMotors() {
+        return motors;
+    }
+
+    private ElectricMotor[] motors;
 
     private BreakLight breakLight[];
     private TurnSignalLight turnSignalLight[];
@@ -28,6 +32,11 @@ public class CentralUnit {
     private PivotTurnable[] pivotsTurnable;
     private PivotStatic[] pivotsStatic;
 
+    public MixDevice getMixer() {
+        return mixer;
+    }
+
+    private MixDevice mixer;
     private FrontCannon frontCannon;
     private HeadCannon headCannon;
 
@@ -59,7 +68,7 @@ public class CentralUnit {
             }
         }
         for (int i = 0; i < 4; i++) { // 4 on the top
-            this.lights.get(SwitchType.headLightsFront)[i] = new HeadLight(PositionType.frontop);
+            this.lights.get(SwitchType.headLightsRoof)[i] = new HeadLight(PositionType.frontop);
         }
         //the blue lights at the front
         this.lights.get(SwitchType.BlueLights)[0] = new BlueLight(PositionType.frontleftbottom, 1);
@@ -89,7 +98,7 @@ public class CentralUnit {
         this.groundSprayNozzles = new GroundSprayNozzles[]{new GroundSprayNozzles(),new GroundSprayNozzles()};
         WaterTank tank1 = new WaterTank();
         FoamTank tank2 = new FoamTank();
-        MixDevice mixer = new MixDevice(tank1,tank2);
+        mixer = new MixDevice(tank1,tank2);
         frontCannon = new FrontCannon(mixer);
         headCannon = new HeadCannon(mixer);
         this.motors = new ElectricMotor[]{new ElectricMotor(box),new ElectricMotor(box)};
@@ -136,8 +145,8 @@ public class CentralUnit {
         return (Lights[]) this.lights.get(SwitchType.BlueLights);
     }
 
-    public HeadLight[] getSideLights() {
-        return (HeadLight[]) this.lights.get(SwitchType.SideLights);
+    public Lights[] getSideLights() {
+        return (Lights[]) this.lights.get(SwitchType.SideLights);
     }
 
     public TurnSignalLight[] getTurnSignalLights() {

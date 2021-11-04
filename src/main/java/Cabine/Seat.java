@@ -24,10 +24,12 @@ public class Seat {
     public Seat(PositionType position,OperatorSection section) {
         this.position = position;
         respirators = new Respirators();
+        operator = section;
     }
     public Seat(PositionType position,DriverSection section) {
         this.position = position;
         respirators = new Respirators();
+        driver = section;
     }
     public Respirators getRespirators() {
         return respirators;
@@ -59,5 +61,9 @@ public class Seat {
     }
     public PositionType getPosition() {
         return this.position;
+    }
+    public boolean isTaken()
+    {
+        return person != null;
     }
 }

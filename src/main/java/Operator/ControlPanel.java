@@ -12,6 +12,10 @@ public class ControlPanel {
         return switches;
     }
 
+    public LightSwitch[] getSwitches() {
+        return switches;
+    }
+
     private LightSwitch[] switches;
 
     public ElectroMotorSwitch getMotorSwitch() {
