@@ -19,7 +19,7 @@ public class TestApplication {
     public void Setup(){
         flf = new FLF.Builder().build();
     }
-
+    
     @Test
     @Order(1)
     public void buildComplete()
