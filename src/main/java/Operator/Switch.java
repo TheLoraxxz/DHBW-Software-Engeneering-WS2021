@@ -14,6 +14,8 @@ public abstract class Switch {
     public abstract void on();
 
     public abstract void off();
+
+
     public SwitchType getSwitchTypeOperation() {
         return switchTypeOperation;
     }

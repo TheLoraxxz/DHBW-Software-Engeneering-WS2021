@@ -95,22 +95,30 @@ public class CentralUnit {
         };
         this.breakLight = new BreakLight[]{new BreakLight(PositionType.backleftbottom),new BreakLight(PositionType.backrightbottom)};
         // LIghts finished
-        this.groundSprayNozzles = new GroundSprayNozzles[]{new GroundSprayNozzles(),new GroundSprayNozzles()};
         WaterTank tank1 = new WaterTank();
         FoamTank tank2 = new FoamTank();
         mixer = new MixDevice(tank1,tank2);
         frontCannon = new FrontCannon(mixer);
         headCannon = new HeadCannon(mixer);
+        this.groundSprayNozzles = new GroundSprayNozzles[]{
+            new GroundSprayNozzles(tank1),
+            new GroundSprayNozzles(tank1),
+            new GroundSprayNozzles(tank1),
+            new GroundSprayNozzles(tank1),
+            new GroundSprayNozzles(tank1),
+            new GroundSprayNozzles(tank1),
+            new GroundSprayNozzles(tank1)};
+        
         this.motors = new ElectricMotor[]{new ElectricMotor(box),new ElectricMotor(box)};
         pivotsStatic = new PivotStatic[]{new PivotStatic(), new PivotStatic()};
         pivotsTurnable = new PivotTurnable[]{new PivotTurnable(), new PivotTurnable()};
         if(type==JoystickType.seperate) {
             driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,this.motors,frontCannon,breakLight,null);
-            operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,null);
+            operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,null,groundSprayNozzles);
         } else {
             GeneralJoystick joystick = new GeneralJoystick(frontCannon,headCannon);
             driverSection = new DriverSection(this.turnSignalLight,pivotsTurnable,this.motors,frontCannon,breakLight,joystick);
-            operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,joystick);
+            operatorSection = new OperatorSection(frontCannon, headCannon, lights, this.motors, mixer,joystick,groundSprayNozzles);
         }
         
     }

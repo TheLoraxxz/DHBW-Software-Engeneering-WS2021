@@ -2,6 +2,7 @@ package main.java.Operator;
 
 import main.java.Engine.ElectricMotor;
 import main.java.ExtinguishDevices.FrontCannon;
+import main.java.ExtinguishDevices.GroundSprayNozzles;
 import main.java.ExtinguishDevices.HeadCannon;
 import main.java.ExtinguishDevices.MixDevice;
 import main.java.FLF.PositionType;
@@ -29,8 +30,8 @@ public class OperatorSection {
     private GeneralJoystick gJoystick;
     private Operator operator;
 
-    public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor, MixDevice mixing,Joystick joystick) {
-        this.panel = new ControlPanel(front,head,lights,motor);
+    public OperatorSection(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor, MixDevice mixing,Joystick joystick,GroundSprayNozzles[] nozzle) {
+        this.panel = new ControlPanel(front,head,lights,motor,nozzle);
         if(this.joystick==null) {
             this.joystick = new JoystickHeadCanon(head);
         } else {
