@@ -17,9 +17,9 @@ public class GroundSprayNozzles extends Cannon {
     @Override
     public void setCannonState(CannonState cannonState) {
         if(cannonState==CannonState.inactive) {
-            this.cannonState = CannonState.throwingExtinguishMedium;
-        } else {
             this.cannonState =CannonState.inactive;
+        } else {
+            this.cannonState = CannonState.throwingExtinguishMedium;
         }
     }
 }
