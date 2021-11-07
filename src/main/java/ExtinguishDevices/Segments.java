@@ -14,7 +14,7 @@ public class Segments {
         }
         else
         {
-            partSegments = null;
+            this.partSegments = null;
         }
     }
     public void setTiltDegree(float tilt) {
