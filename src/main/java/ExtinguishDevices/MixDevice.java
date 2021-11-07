@@ -12,12 +12,14 @@ public class MixDevice {
         this.foam = foam;
     }
     public void defill(int amount) {
-        int foamV = amount*this.mixType.getValue();
-        int waterV = amount-foamV; 
+        System.out.println(this.mixType.getValue());
+        float foamV = amount*(((float) this.mixType.getValue())/ 100);
+        float waterV = amount-foamV; 
         this.water.takeOut(waterV);
         this.foam.takeOut(foamV);
     }
     public void setToNextMix() {
+        System.out.println(this.mixType);
         switch(this.mixType){
             case zero -> this.mixType = MixType.three;
             case three -> this.mixType = MixType.five;
