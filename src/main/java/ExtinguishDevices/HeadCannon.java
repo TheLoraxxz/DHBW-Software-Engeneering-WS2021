@@ -37,11 +37,11 @@ public class HeadCannon extends Cannon{
     public void setCannonState(CannonState cannonState) {
         if (cannonState==CannonState.active) {
             this.segments[0].setTiltDegree(90);
-            for (PartSegments segment:this.segments[0].getPartSegments()) {
+            for (PartSegments segment:this.segments[1].getPartSegments()) {
                 segment.moveOut();
             }
         } else {
-            for (PartSegments segment:this.segments[0].getPartSegments()) {
+            for (PartSegments segment:this.segments[1].getPartSegments()) {
                 segment.moveIn();
             }
             this.segments[0].setTiltDegree(0);
