@@ -6,7 +6,7 @@ public enum KnopRoofStepsType {
     c(2500);
     private int value;
     private KnopRoofStepsType(int value) {
-
+        this.value = value;
     }
     public int getValue() {
         return this.value;
