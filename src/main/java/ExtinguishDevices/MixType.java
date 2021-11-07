@@ -7,7 +7,7 @@ public enum MixType {
     zero(0);
     private int value;
     private MixType(int value) {
-
+        this.value = value;
     }
     public int getValue() {
         return this.value;
