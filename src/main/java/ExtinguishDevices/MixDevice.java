@@ -1,5 +1,6 @@
 package main.java.ExtinguishDevices;
 
+
 public class MixDevice {
     private MixType mixType;
     private WaterTank water;
@@ -11,8 +12,8 @@ public class MixDevice {
         this.foam = foam;
     }
     public void defill(int amount) {
-        float foamV = amount*this.mixType.getValue();
-        float waterV = amount-foamV; 
+        int foamV = amount*this.mixType.getValue();
+        int waterV = amount-foamV; 
         this.water.takeOut(waterV);
         this.foam.takeOut(foamV);
     }
