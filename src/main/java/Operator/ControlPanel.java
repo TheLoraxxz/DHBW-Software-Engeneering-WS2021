@@ -2,6 +2,7 @@ package main.java.Operator;
 
 import main.java.Engine.ElectricMotor;
 import main.java.ExtinguishDevices.FrontCannon;
+import main.java.ExtinguishDevices.GroundSprayNozzles;
 import main.java.ExtinguishDevices.HeadCannon;
 import main.java.Lights.Lights;
 
@@ -28,6 +29,12 @@ public class ControlPanel {
         return knobFront;
     }
 
+    private GroundNozzleSwitch nozzleSwitch;
+
+    public GroundNozzleSwitch getNozzleSwitch() {
+        return nozzleSwitch;
+    }
+
     private KnobFrontWaterCanon knobFront;
 
     public KnobRoofWaterCanon getKnobRoof() {
@@ -36,10 +43,11 @@ public class ControlPanel {
 
     private KnobRoofWaterCanon knobRoof;
 
-    ControlPanel(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor) {
+    ControlPanel(FrontCannon front, HeadCannon head, HashMap<SwitchType, Lights[]> lights, ElectricMotor[] motor,GroundSprayNozzles[] nozzles) {
         this.knobFront = new KnobFrontWaterCanon(front);
         this.knobRoof = new KnobRoofWaterCanon(head);
         this.motorSwitch = new ElectroMotorSwitch(motor);
+        this.nozzleSwitch = new GroundNozzleSwitch(SwitchType.groundSprayNozzles,nozzles);
         this.switches = new LightSwitch[5];
         for (byte i=0;i<5;i++) {
             switch (i) {
