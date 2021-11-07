@@ -13,6 +13,7 @@ public class JoyStickFeeler implements IFeeler{
     @Override
     public void press() {
         if(canon.getCannonState()==CannonState.active) {
+            canon.pumpOut();
         }
     }
 }

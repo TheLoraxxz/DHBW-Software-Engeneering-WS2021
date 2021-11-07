@@ -60,7 +60,6 @@ public abstract class Tank {
                 }
             }
         }
-        
         return foamV;
     }
 

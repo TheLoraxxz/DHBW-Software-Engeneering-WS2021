@@ -22,7 +22,7 @@ public class Segments {
         this.tiltDegree = tilt;
     }
     public PartSegments[] getPartSegments() {
-        if(!this.canTilt) {
+        if(this.canTilt) {
             return this.partSegments;
         }
         return null;

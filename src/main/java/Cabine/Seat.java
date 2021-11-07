@@ -36,8 +36,18 @@ public class Seat {
     }
 
 
-    public Person getPerson() {
-        return person;
+    public Operator getOperator()
+    {
+        if(operator != null)
+            return (Operator)person;
+        return null;
+    }
+
+    public Driver getDriver()
+    {
+        if(driver != null)
+            return (Driver) person;
+        return null;
     }
 
     public boolean setPerson(Person person) {
