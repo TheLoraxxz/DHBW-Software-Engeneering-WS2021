@@ -12,7 +12,7 @@ public enum FrontWaterStepsType {
     seven(3500);
     private int value;
     private FrontWaterStepsType(int value) {
-
+        this.value = value;
     }
     public int getValue() {
         return this.value;
