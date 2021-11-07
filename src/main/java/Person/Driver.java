@@ -14,7 +14,11 @@ public class Driver extends FLFOperator{
     public void pressGasPedal() {
         if(this.section!=null) {
             this.section.getGasPedal().press();
-            this.section.getGasPedal().release();
+        }
+    }
+    public void releaseGasPedal() {
+        if(this.section!=null) {
+            this.section.getBreakPedal().release();
         }
     }
 
