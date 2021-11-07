@@ -1,6 +1,5 @@
 package main.java.Operator;
 
-import main.java.ExtinguishDevices.GroundSprayNozzles;
 
 public enum SwitchType {
     electroMotor(-1),
