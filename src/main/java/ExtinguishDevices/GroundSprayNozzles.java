@@ -9,7 +9,7 @@ public class GroundSprayNozzles extends Cannon {
     @Override
     public void pumpOut() {
         if(this.cannonState == CannonState.throwingExtinguishMedium) {
-            this.waterTank.defill(100);
+            this.waterTank.takeOut(100);
         }
         
     }

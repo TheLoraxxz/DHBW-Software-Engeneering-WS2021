@@ -32,7 +32,7 @@ public abstract class Tank {
         }
     }
 
-    public float defill(float foamV) {
+    public float takeOut(float foamV) {
         int amount = (int) foamV;
         int cap = this.getCapacity();
         for(int i=0;i<this.capacity.length;i++) {
@@ -59,9 +59,9 @@ public abstract class Tank {
                     }
                 }
             }
+            return foamV;
         }
         
-        return foamV;
     }
 
     public int getCapacity() {
