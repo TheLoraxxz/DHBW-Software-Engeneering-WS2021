@@ -6,6 +6,11 @@ import main.java.Lights.TurnSignalLight;
 
 public class SteeringWheel {
     private TurnSignalLight[] lights;
+
+    public PivotTurnable[] getTurnables() {
+        return turnables;
+    }
+
     private PivotTurnable [] turnables;
     public SteeringWheel(TurnSignalLight[] lights,PivotTurnable[] turnables) {
         this.lights = lights;

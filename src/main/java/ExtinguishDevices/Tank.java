@@ -60,8 +60,7 @@ public abstract class Tank {
                 }
             }
             return foamV;
-        }
-        
+        }   
     }
 
     public int getCapacity() {

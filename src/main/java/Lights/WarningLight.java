@@ -3,13 +3,13 @@ package main.java.Lights;
 import main.java.FLF.PositionType;
 
 public class WarningLight extends Lights{
-    private LED led;
+    private LED[] led;
     public WarningLight(PositionType pos) {
         super();
         this.position = pos;
-        this.led = new LED();
+        this.led = new LED[]{new LED()};
     }
-    public LED getLed() {
+    public LED[] getLeds() {
         return led;
     }
 
