@@ -152,7 +152,6 @@ public class TestApplication {
         ChecklightsOn();
         CheckTanks();
         //bodensprühdose
-        //System.out.println(flf.getCentralUnit().getMixer().getWaterTank().getCapacity());
         //CheckWaterConsumption();
         ChangeFrontCannonState(3,FrontWaterStepsType.six,2);
         System.out.println(flf.getCentralUnit().getMixer().getWaterTank().getCapacity());
