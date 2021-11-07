@@ -7,9 +7,8 @@ public class Segments {
     public Segments(boolean canTilt) {
         this.tiltDegree = 0;
         this.canTilt = canTilt;
-        if(canTilt)
-        {
-            partSegments = new PartSegments[]{
+        if(!this.canTilt){
+            this.partSegments = new PartSegments[]{
                     new PartSegments(6),new PartSegments(6), new PartSegments(5)
             };
         }
