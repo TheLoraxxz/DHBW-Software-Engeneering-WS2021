@@ -43,4 +43,5 @@ public class Cabin {
     }
 
     private SpeedDisplay speedDisplay;
+
 }
