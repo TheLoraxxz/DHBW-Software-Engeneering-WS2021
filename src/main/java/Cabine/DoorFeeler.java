@@ -3,21 +3,21 @@ package main.java.Cabine;
 import main.java.Person.Person;
 
 public class DoorFeeler implements IDoorFeeler{
-    private boolean isOpen;
+    private BusDoor busDoor;
     private boolean isInside;
     private Seat[] seats;
-    public DoorFeeler(boolean open,boolean position,Seat[] seats) {
+    public DoorFeeler(BusDoor busDoor,boolean position,Seat[] seats) {
         this.isInside = position;
-        isOpen = open;
+        this.busDoor = busDoor;
         this.seats = seats;
     }
     @Override
     public void press(Person person) {
         if(!isInside) {
-            isOpen = !isOpen;
+            busDoor.setOpen(!busDoor.isOpen());
         } else {
             if(seats.equals(person)) {
-                isOpen = !isOpen;
+                busDoor.setOpen(!busDoor.isOpen());
             }
         }
     }

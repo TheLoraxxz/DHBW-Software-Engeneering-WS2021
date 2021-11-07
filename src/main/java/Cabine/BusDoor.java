@@ -10,7 +10,7 @@ public class BusDoor {
     public BusDoor(PositionType position,Seat[] seats) {
         this.position = position;
         isOpen = false;
-        doorFeelers = new DoorFeeler[]{new DoorFeeler(isOpen,true,seats),new DoorFeeler(isOpen,false,seats)};
+        doorFeelers = new DoorFeeler[]{new DoorFeeler(this,true,seats),new DoorFeeler(this,false,seats)};
     }
 
     public DoorFeeler[] getDoorFeelers() {
@@ -18,6 +18,12 @@ public class BusDoor {
     }
     public PositionType getPositionType() {
         return position;
+    }
+    public void setOpen(boolean isOpen) {
+        this.isOpen = isOpen;
+    }
+    public boolean isOpen() {
+        return isOpen;
     }
 
 }
