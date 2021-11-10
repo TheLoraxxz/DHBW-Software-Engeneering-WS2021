@@ -11,7 +11,7 @@ public enum SwitchType {
     BlueLights(0);
     private int value;
     private SwitchType(int value) {
-
+        this.value = value;
     }
     public int getValue() {
         return this.value;
