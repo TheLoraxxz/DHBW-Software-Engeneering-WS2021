@@ -15,7 +15,7 @@ public class LightSwitch extends Switch {
 
     @Override
     public void on() {
-        this.on =true;
+        this.on = true;
         for (Lights t:lights) {
             t.on();
         }

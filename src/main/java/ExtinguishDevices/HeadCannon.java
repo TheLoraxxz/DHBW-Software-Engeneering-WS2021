@@ -5,6 +5,11 @@ public class HeadCannon extends Cannon{
     private KnopRoofStepsType steps;
     private Segments[] segments;
 
+    public boolean isMovedOut() {
+        return isMovedOut;
+    }
+
+    private boolean isMovedOut;
     private MixDevice mixDevice;
 
     public HeadCannon(MixDevice mixing) {
@@ -14,6 +19,7 @@ public class HeadCannon extends Cannon{
                 new Segments(true),
                 new Segments(false)};
         this.mixDevice =mixing;
+        isMovedOut = false;
     }
 
     public KnopRoofStepsType getSteps() {
@@ -40,10 +46,12 @@ public class HeadCannon extends Cannon{
             for (PartSegments segment:this.segments[1].getPartSegments()) {
                 segment.moveOut();
             }
+            isMovedOut = true;
         } else {
             for (PartSegments segment:this.segments[1].getPartSegments()) {
                 segment.moveIn();
             }
+            isMovedOut = false;
             this.segments[0].setTiltDegree(0);
         }
         this.cannonState = cannonState;

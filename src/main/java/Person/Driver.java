@@ -3,6 +3,10 @@ package main.java.Person;
 import main.java.Driver.DriverSection;
 
 public class Driver extends FLFOperator{
+    public DriverSection getSection() {
+        return section;
+    }
+
     private DriverSection section;
 
     public void turnWheel(float degree) {

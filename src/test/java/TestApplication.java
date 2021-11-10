@@ -1,4 +1,5 @@
 package test.java;
+
 import main.java.Cabine.BusDoor;
 import main.java.Cabine.Seat;
 import main.java.Engine.Pivot;
@@ -11,16 +12,14 @@ import main.java.Lights.LED;
 import main.java.Lights.Lights;
 import main.java.Lights.WarningLight;
 import main.java.Operator.LightSwitch;
+import main.java.Operator.SwitchType;
 import main.java.Person.Driver;
 import main.java.Person.Operator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLOutput;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestApplication {
     private FLF flf;
@@ -105,12 +104,81 @@ public class TestApplication {
     @Order(2)
     public void usageControlPanel()
     {
-        
+        flf.getCabin().getSeats()[1].setPerson(new Operator());
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.electroMotor);
+        for (int i = 0; i < 2; i++) {
+            assertTrue(flf.getCentralUnit().getMotors()[i].isOn());
+        }
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.electroMotor);
+        for (int i = 0; i < 2; i++) {
+            assertFalse(flf.getCentralUnit().getMotors()[i].isOn());
+        }
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.warningLights);
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.BlueLights);
+        CheckLED(true);
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.warningLights);
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.BlueLights);
+        CheckLED(false);
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.headLightsFront);
+        for (int i = 0; i < 2; i++) {
+            assertTrue(flf.getCentralUnit().getHeadFrontLights()[i].isOn());
+        }
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.headLightsFront);
+        for (int i = 0; i < 2; i++) {
+            assertFalse(flf.getCentralUnit().getHeadFrontLights()[i].isOn());
+        }
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.headLightsRoof);
+        for (int i = 0; i < 2; i++) {
+            assertTrue(flf.getCentralUnit().getHeadRoofLights()[i].isOn());
+        }
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.headLightsRoof);
+        for (int i = 0; i < 2; i++) {
+            assertFalse(flf.getCentralUnit().getHeadRoofLights()[i].isOn());
+        }
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.SideLights);
+        for (int i = 0; i < 2; i++) {
+            assertTrue(flf.getCentralUnit().getSideLights()[i].isOn());
+        }
+        flf.getCabin().getSeats()[1].getOperator().pressSwitch(SwitchType.SideLights);
+        for (int i = 0; i < 2; i++) {
+            assertFalse(flf.getCentralUnit().getSideLights()[i].isOn());
+        }
     }
     @Test
     @Order(3)
     public void handleParking()
     {
+        for (int i = 0; i < 2; i++) {
+            assertFalse(flf.getCentralUnit().getMotors()[i].isOn());   
+        }
+        for (int i = 0; i < 4; i++) {
+            assertFalse(flf.getCabin().getSeats()[i].isTaken());
+        }
+        for (int i = 0; i < 2; i++) {
+            assertFalse(flf.getCabin().getBusDoors()[i].isOpen());
+        }
+        assertEquals(CannonState.inactive,flf.getCentralUnit().getFrontCannon().getCannonState());
+        assertEquals(CannonState.inactive,flf.getCentralUnit().getHeadCannon().getCannonState());
+        for (Lights l:
+                flf.getCentralUnit().getHeadRoofLights()) {
+                l.off();
+            assertFalse(l.isOn());
+        }
+        for (Lights l:
+                flf.getCentralUnit().getSideLights()) {
+            l.off();
+            assertFalse(l.isOn());
+        }
+        for (Lights l:
+                flf.getCentralUnit().getHeadFrontLights()) {
+            l.off();
+            assertFalse(l.isOn());
+        }
+        CheckLED(false);
+        CheckTanks();
+        CheckEnergyConsumption(400000);
+        assertEquals(KnopRoofStepsType.a,flf.getCentralUnit().getHeadCannon().getSteps());
+        assertEquals(FrontWaterStepsType.one,flf.getCentralUnit().getFrontCannon().getSteps());
 
     }
     @Test
@@ -118,7 +186,7 @@ public class TestApplication {
     public void handleInspectionDrive()
     {
         StartFLF();
-        ChecklightOff(false);
+        CheckLightOff(false);
         CheckTanks();
         ChangeKnopsToOne();
         Accelerate(7);
@@ -137,7 +205,7 @@ public class TestApplication {
     public void handleEmergencyService()
     {
         StartFLF();
-        ChecklightOff(true);
+        CheckLightOff(true);
         CheckTanks();
         ChangeKnopsToOne();
         Accelerate(20);
@@ -149,45 +217,77 @@ public class TestApplication {
     public void handleFuelTruckOnFire()
     {
         StartFLF();
-        ChecklightsOn();
+        CheckLightsOn();
         CheckTanks();
-        //bodensprühdose
-        //CheckWaterConsumption();
+        flf.getCabin().getSeats()[1].getOperator().getOperatorSection().getPanel().getNozzleSwitch().on();
+        flf.getCabin().getSeats()[1].getOperator().getOperatorSection().getPanel().getNozzleSwitch().off();
+        CheckWaterConsumption(11800);
         ChangeFrontCannonState(3,FrontWaterStepsType.six,2);
-        System.out.println(flf.getCentralUnit().getMixer().getWaterTank().getCapacity());
-        System.out.println(flf.getCentralUnit().getMixer().getFoamTank().getCapacity());
-        //CheckWaterConsumption();
-        //CheckFoamConsumption();
+        CheckWaterConsumption(3250);
+        CheckFoamConsumption(2050);
         ChangeHeadCannonState(3,KnopRoofStepsType.c,1);
-        System.out.println(flf.getCentralUnit().getMixer().getWaterTank().getCapacity());
-        System.out.println(flf.getCentralUnit().getMixer().getFoamTank().getCapacity());
-        //CheckWaterConsumption();
-        //CheckFoamConsumption();
+        CheckWaterConsumption(0);
+        CheckFoamConsumption(1300);
     }
     @Test
     @Order(7)
     public void handlePushbackVehicleOnFire()
     {
-
+        StartFLF();
+        CheckLightsOn();
+        CheckTanks();
+        ChangeFrontCannonState(3,FrontWaterStepsType.seven,3);
+        CheckWaterConsumption(3050);
+        CheckFoamConsumption(1450);
+        ChangeHeadCannonState(5,KnopRoofStepsType.c,1);
+        CheckWaterConsumption(0);
+        CheckFoamConsumption(1450);
+        ChangeFrontCannonState(3,FrontWaterStepsType.two,1);
+        CheckWaterConsumption(0);
+        CheckFoamConsumption(1450);
     }
     @Test
     @Order(8)
     public void handleAirplaneEngineFire()
     {
-
+        StartFLF();
+        CheckLightsOn();
+        CheckTanks();
+        ChangeFrontCannonState(5,FrontWaterStepsType.seven,3);
+        CheckWaterConsumption(0);
+        CheckFoamConsumption(750);
+        ChangeHeadCannonState(5,KnopRoofStepsType.c,3);
+        CheckWaterConsumption(0);
+        CheckFoamConsumption(125);
+        ChangeHeadCannonState(5,KnopRoofStepsType.c,3);
+        CheckWaterConsumption(0);
+        CheckFoamConsumption(0);
+        ChangeFrontCannonState(5,FrontWaterStepsType.seven,3);
+        CheckWaterConsumption(0);
+        CheckFoamConsumption(0);
     }
 
     public void StartFLF()
     {
         flf.getCentralUnit().getMotors()[0].setOn(true);
         flf.getCentralUnit().getMotors()[1].setOn(true);
+        for (int i = 0; i < 2; i++)
+        {
+            assertTrue(flf.getCentralUnit().getMotors()[i].isOn());
+        }
         flf.getCabin().getSeats()[0].setPerson(new Driver());
         flf.getCabin().getSeats()[1].setPerson(new Operator());
-        //bustüren haben keine logik
-        //flf.getCabin().getBusDoors()
+        for (int i = 0; i < 2; i++)
+        {
+            assertTrue(flf.getCabin().getSeats()[i].isTaken());
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            assertFalse(flf.getCabin().getBusDoors()[i].isOpen());
+        }
     }
 
-    public void ChecklightOff(boolean HeadlightValue)
+    public void CheckLightOff(boolean HeadlightValue)
     {
         assertEquals(CannonState.inactive,flf.getCentralUnit().getFrontCannon().getCannonState());
         assertEquals(CannonState.inactive,flf.getCentralUnit().getHeadCannon().getCannonState());
@@ -209,10 +309,10 @@ public class TestApplication {
             l.on();
             assertTrue(l.isOn());
         }
-        CheckLEDOn();
+        CheckLED(true);
     }
 
-    public void ChecklightsOn()
+    public void CheckLightsOn()
     {
         for (Lights l:
              flf.getCentralUnit().getHeadRoofLights()) {
@@ -229,18 +329,18 @@ public class TestApplication {
             l.on();
             assertTrue(l.isOn());
         }
-        CheckLEDOn();
+        CheckLED(true);
     }
     
-    public void CheckLEDOn()
+    public void CheckLED(boolean checkValue)
     {
         for (Lights l:
                 flf.getCentralUnit().getWarningLights()) {
             WarningLight wl = (WarningLight) l;
             for (LED led:
                  wl.getLeds()) {
-                led.setOn(true);
-                assertTrue(led.isOn());
+                led.setOn(checkValue);
+                assertEquals(checkValue,led.isOn());
             }
         }
         for (Lights l:
@@ -248,8 +348,8 @@ public class TestApplication {
             BlueLight wl = (BlueLight) l;
             for (LED led:
                     wl.getLeds()) {
-                led.setOn(true);
-                assertTrue(led.isOn());
+                led.setOn(checkValue);
+                assertEquals(checkValue,led.isOn());
             }
         }
     }
@@ -264,6 +364,8 @@ public class TestApplication {
     {
         flf.getCabin().getSeats()[1].getOperator().changeFrontKnobToType(FrontWaterStepsType.one);
         flf.getCabin().getSeats()[1].getOperator().changeHeadKnobToType(KnopRoofStepsType.a);
+        assertEquals(FrontWaterStepsType.one,flf.getCentralUnit().getHeadCannon().getSteps());
+        assertEquals(FrontWaterStepsType.one,flf.getCentralUnit().getFrontCannon().getSteps());
     }
 
     public void Accelerate(int iterations)
@@ -302,12 +404,13 @@ public class TestApplication {
 
     public void CheckFoamConsumption(int CorrectValue)
     {
-        assertEquals(CorrectValue,flf.getCentralUnit().getMixer().getWaterTank().getCapacity());
+        assertEquals(CorrectValue,flf.getCentralUnit().getMixer().getFoamTank().getCapacity());
     }
 
     public void ChangeFrontCannonState(int iterations, FrontWaterStepsType targetType, int mixValue)
     {
-        flf.getCabin().getSeats()[0].getDriver().pressJoystickLeft();
+        if(flf.getCentralUnit().getFrontCannon().getTiltDegree() != 90)
+            flf.getCabin().getSeats()[0].getDriver().pressJoystickLeft();
         flf.getCabin().getSeats()[1].getOperator().changeFrontKnobToType(targetType);
         for (int i = 0; i < mixValue; i++)
         {
@@ -321,7 +424,8 @@ public class TestApplication {
 
     public void ChangeHeadCannonState(int iterations, KnopRoofStepsType targetType, int mixValue)
     {
-        flf.getCabin().getSeats()[1].getOperator().pressJoystickLeft();
+        if(!flf.getCentralUnit().getHeadCannon().isMovedOut())
+            flf.getCabin().getSeats()[1].getOperator().pressJoystickLeft();
         flf.getCabin().getSeats()[1].getOperator().changeHeadKnobToType(targetType);
         for (int i = 0; i < mixValue; i++)
         {

@@ -6,7 +6,11 @@ import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
 
 public class Operator extends FLFOperator {
-    OperatorSection operatorSection;
+    public OperatorSection getOperatorSection() {
+        return operatorSection;
+    }
+
+    private OperatorSection operatorSection;
 
     @Override
     public void pressJoystickRight() {
