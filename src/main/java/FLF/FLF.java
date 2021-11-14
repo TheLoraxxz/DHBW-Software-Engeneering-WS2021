@@ -25,18 +25,18 @@ public class FLF {
     public FLF(Builder builder) {
         cabin = builder.cabin;
         centralUnit = builder.centralUnit;
-        box = builder.batteries;
+        box = builder.batteries.boxx;
     }
 
     public static class Builder{
         private Cabin cabin;
         private CentralUnit centralUnit;
-        private Box batteries;
+        private Batterymanagement batteries;
         private static JoystickType types = JoystickType.seperate;
         public Builder() {
-            batteries = new Box();
-            centralUnit = new CentralUnit(batteries,types);
-            cabin = new Cabin(centralUnit.getDriverSection(),centralUnit.getOperatorSection(),batteries,this.centralUnit.getPivotsStatic());
+            batteries = Batterymanagement.instance;
+            centralUnit = new CentralUnit(batteries.boxx,types);
+            cabin = new Cabin(centralUnit.getDriverSection(),centralUnit.getOperatorSection(),batteries.boxx,this.centralUnit.getPivotsStatic());
         }
         public static void setJoystickType(JoystickType type) {
             types = type;

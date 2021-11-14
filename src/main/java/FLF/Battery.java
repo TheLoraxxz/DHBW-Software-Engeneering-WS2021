@@ -13,7 +13,7 @@ public class Battery {
         }
     }
 
-    public void setCapacity(double capacity) {
+    public void takeOut(double capacity) {
         int amount = (int) capacity;
         for(int i=0;i<this.capacity.length;i++) {
             for(int j=0;j<this.capacity[0].length;j++) {
@@ -37,8 +37,36 @@ public class Battery {
         }  
     }
 
+    public void charge(int amount) {
+        int max_cap = this.capacity.length*this.capacity[0].length*this.capacity[0][0].length;
+        int cap = (int) this.getCapacity();
+        if(amount+cap>=max_cap){
+            for(int i=0;i<this.capacity.length;i++) {
+                for(int j=0;j<this.capacity[0].length;j++) {
+                    for(int k=0;k<this.capacity[0][0].length;k++) {
+                        this.capacity[i][j][k]=true;
+                    }
+                }
+            }   
+        } else {
+            int newAmm = amount+cap;
+            for(int i =0;i<this.capacity.length;++i) {
+                for (int j=0;j<this.capacity[0].length;++j) {
+                    for (int k=0;k<this.capacity[0][0].length;++k) {
+                        if(newAmm==0) {
+                            return;
+                        } else {
+                            this.capacity[i][j][k]=true;
+                            --newAmm;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    } 
 
-    public double getCapacity() {
+    public int getCapacity() {
         int cap =0;
         for (boolean[][] bs : capacity) {
             for (boolean[] bs2 : bs) {

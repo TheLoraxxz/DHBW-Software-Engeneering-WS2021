@@ -20,12 +20,18 @@ public class Box {
         return this.batterystatus;
     }
 
+    public void charge(int amount) {
+        for (Battery battery : batteries) {
+            battery.charge(amount/4);
+        }
+    }
+
     public boolean takeOut(double amount) {
         for (Battery battery : batteries) {
             double cap =battery.getCapacity();
             if(cap-amount>0) {
                 cap = cap-amount/4;
-                battery.setCapacity(cap);
+                battery.takeOut(cap);
             } else {
                 cap = 0;
                 return false;
