@@ -26,6 +26,7 @@ public class TestApplication {
 
     @BeforeEach
     public void Setup(){
+        flf = null;
         flf = new FLF.Builder().build();
     }
     
@@ -148,6 +149,8 @@ public class TestApplication {
     @Order(3)
     public void handleParking()
     {
+        flf.getCentralUnit().getMotors()[0].setOn(false);
+        flf.getCentralUnit().getMotors()[1].setOn(false);
         for (int i = 0; i < 2; i++) {
             assertFalse(flf.getCentralUnit().getMotors()[i].isOn());   
         }
@@ -176,16 +179,18 @@ public class TestApplication {
         }
         CheckLED(false);
         CheckTanks();
+        flf.getBatteries();
+        ChargeBatterie();
         CheckEnergyConsumption(400000);
         assertEquals(KnopRoofStepsType.a,flf.getCentralUnit().getHeadCannon().getSteps());
         assertEquals(FrontWaterStepsType.one,flf.getCentralUnit().getFrontCannon().getSteps());
-
     }
     @Test
     @Order(4)
     public void handleInspectionDrive()
     {
         StartFLF();
+        ChargeBatterie();
         CheckLightOff(false);
         CheckTanks();
         ChangeKnopsToOne();
@@ -435,5 +440,10 @@ public class TestApplication {
         {
             flf.getCabin().getSeats()[1].getOperator().pressFeeler();
         }
+    }
+
+    private void ChargeBatterie()
+    {
+        flf.getBatteries().charge(400000);
     }
 }

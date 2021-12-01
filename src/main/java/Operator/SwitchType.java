@@ -4,9 +4,9 @@ package main.java.Operator;
 public enum SwitchType {
     electroMotor(-1),
     groundSprayNozzles(-2),
-    headLightsFront(4),
+    headLightsFront(3),
     warningLights(2),
-    headLightsRoof(3),
+    headLightsRoof(4),
     SideLights(1),
     BlueLights(0);
     private int value;
