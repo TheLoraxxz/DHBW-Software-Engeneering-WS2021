@@ -3,6 +3,10 @@ package main.java.Person;
 import main.java.Driver.DriverSection;
 
 public class Driver extends FLFOperator{
+    public Driver() {
+        this.id_card = new ID_Card("Red Adair",6072);
+    }
+
     public DriverSection getSection() {
         return section;
     }

@@ -1,16 +1,21 @@
 package main.java.Cabine;
 
+import main.java.FLF.CentralUnit;
 import main.java.FLF.PositionType;
+import main.java.Person.FLFOperator;
 
 public class BusDoor {
-    private boolean isOpen;
+    private boolean isOpen,isUnlocked;
     private PositionType position;
     private DoorFeeler[] doorFeelers;
+    private ReceiverModule receiverModule;
 
-    public BusDoor(PositionType position,Seat[] seats) {
+    public BusDoor(PositionType position, Seat[] seats, CentralUnit cUnit) {
         this.position = position;
+        isUnlocked = true;
         isOpen = false;
         doorFeelers = new DoorFeeler[]{new DoorFeeler(this,true,seats),new DoorFeeler(this,false,seats)};
+        receiverModule = new ReceiverModule(cUnit);
     }
 
     public DoorFeeler[] getDoorFeelers() {
@@ -26,4 +31,9 @@ public class BusDoor {
         return isOpen;
     }
 
+    public void UseReceiverModule(FLFOperator flfOperator)
+    {
+        if(receiverModule.TransferIDCode(flfOperator.getId_card().getIDCode()))
+            isUnlocked = !isUnlocked;
+    }
 }

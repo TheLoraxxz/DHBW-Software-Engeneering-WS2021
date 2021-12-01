@@ -198,7 +198,7 @@ public class TestApplication {
         SteerTO(5);
         Drive(5);
         Break(7);
-        CheckEnergyConsumption(376900);
+        CheckEnergyConsumption(376800);
     }
     @Test
     @Order(5)
@@ -210,7 +210,7 @@ public class TestApplication {
         ChangeKnopsToOne();
         Accelerate(20);
         Drive(10);
-        CheckEnergyConsumption(359000);
+        CheckEnergyConsumption(358960);
     }
     @Test
     @Order(6)
@@ -244,7 +244,7 @@ public class TestApplication {
         CheckFoamConsumption(1450);
         ChangeFrontCannonState(3,FrontWaterStepsType.two,1);
         CheckWaterConsumption(0);
-        CheckFoamConsumption(1450);
+        CheckFoamConsumption(1360);
     }
     @Test
     @Order(8)
@@ -364,7 +364,7 @@ public class TestApplication {
     {
         flf.getCabin().getSeats()[1].getOperator().changeFrontKnobToType(FrontWaterStepsType.one);
         flf.getCabin().getSeats()[1].getOperator().changeHeadKnobToType(KnopRoofStepsType.a);
-        assertEquals(FrontWaterStepsType.one,flf.getCentralUnit().getHeadCannon().getSteps());
+        assertEquals(KnopRoofStepsType.a,flf.getCentralUnit().getHeadCannon().getSteps());
         assertEquals(FrontWaterStepsType.one,flf.getCentralUnit().getFrontCannon().getSteps());
     }
 

@@ -6,6 +6,10 @@ import main.java.Operator.OperatorSection;
 import main.java.Operator.SwitchType;
 
 public class Operator extends FLFOperator {
+    public Operator() {
+        this.id_card = new ID_Card("Sam",6072);
+    }
+
     public OperatorSection getOperatorSection() {
         return operatorSection;
     }

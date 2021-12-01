@@ -19,7 +19,8 @@ import java.util.HashMap;
 
 public class CentralUnit {
     private HashMap<SwitchType, Lights[]> lights;
-
+    private String Identifier = "DUS | FLF-5", Code = "6072";
+    private String[] associatedPersonel;
     public ElectricMotor[] getMotors() {
         return motors;
     }
@@ -47,6 +48,7 @@ public class CentralUnit {
 
     private GroundSprayNozzles[] groundSprayNozzles;
     public CentralUnit(Box box,JoystickType type) {
+        associatedPersonel = new String[]{"Red Adair", "Sam"};
         this.lights = new HashMap<>();
         this.lights.put(SwitchType.SideLights, new Lights[10]); //creating the ten side Lights
         this.lights.put(SwitchType.headLightsFront, new Lights[6]); // creating the 6 front lights
@@ -182,5 +184,12 @@ public class CentralUnit {
 
     public GroundSprayNozzles[] getGroundSprayNozzles() {
         return groundSprayNozzles;
+    }
+
+    public boolean CheckIDCode(String IDCode)
+    {
+        if(IDCode == Identifier+associatedPersonel[1]+Code || IDCode == Identifier+associatedPersonel[2]+Code)
+        return true;
+        return false;
     }
 }

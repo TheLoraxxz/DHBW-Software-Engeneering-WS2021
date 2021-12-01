@@ -36,7 +36,7 @@ public class FLF {
         public Builder() {
             batteries = Batterymanagement.instance;
             centralUnit = new CentralUnit(batteries.boxx,types);
-            cabin = new Cabin(centralUnit.getDriverSection(),centralUnit.getOperatorSection(),batteries.boxx,this.centralUnit.getPivotsStatic());
+            cabin = new Cabin(centralUnit.getDriverSection(),centralUnit.getOperatorSection(),batteries.boxx,this.centralUnit.getPivotsStatic(),centralUnit);
         }
         public static void setJoystickType(JoystickType type) {
             types = type;

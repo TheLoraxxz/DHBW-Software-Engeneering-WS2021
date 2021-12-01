@@ -67,7 +67,6 @@ public class Seat {
             }
         }
         return true;
-
     }
     public PositionType getPosition() {
         return this.position;
