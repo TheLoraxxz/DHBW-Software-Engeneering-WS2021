@@ -226,13 +226,13 @@ public class TestApplication {
         CheckTanks();
         flf.getCabin().getSeats()[1].getOperator().getOperatorSection().getPanel().getNozzleSwitch().on();
         flf.getCabin().getSeats()[1].getOperator().getOperatorSection().getPanel().getNozzleSwitch().off();
-        CheckWaterConsumption(11800);
+        CheckWaterConsumption(100550);
         ChangeFrontCannonState(3,FrontWaterStepsType.six,2);
-        CheckWaterConsumption(3250);
-        CheckFoamConsumption(2050);
+        CheckWaterConsumption(92000);
+        CheckFoamConsumption(33300);
         ChangeHeadCannonState(3,KnopRoofStepsType.c,1);
-        CheckWaterConsumption(0);
-        CheckFoamConsumption(1300);
+        CheckWaterConsumption(85250);
+        CheckFoamConsumption(32550);
     }
     @Test
     @Order(7)
@@ -242,14 +242,14 @@ public class TestApplication {
         CheckLightsOn();
         CheckTanks();
         ChangeFrontCannonState(3,FrontWaterStepsType.seven,3);
-        CheckWaterConsumption(3050);
-        CheckFoamConsumption(1450);
+        CheckWaterConsumption(91800);
+        CheckFoamConsumption(32700);
         ChangeHeadCannonState(5,KnopRoofStepsType.c,1);
-        CheckWaterConsumption(0);
-        CheckFoamConsumption(1450);
+        CheckWaterConsumption(79300);
+        CheckFoamConsumption(32700);
         ChangeFrontCannonState(3,FrontWaterStepsType.two,1);
-        CheckWaterConsumption(0);
-        CheckFoamConsumption(1360);
+        CheckWaterConsumption(76390);
+        CheckFoamConsumption(32610);
     }
     @Test
     @Order(8)
@@ -259,17 +259,17 @@ public class TestApplication {
         CheckLightsOn();
         CheckTanks();
         ChangeFrontCannonState(5,FrontWaterStepsType.seven,3);
-        CheckWaterConsumption(0);
-        CheckFoamConsumption(750);
+        CheckWaterConsumption(85500);
+        CheckFoamConsumption(32000);
         ChangeHeadCannonState(5,KnopRoofStepsType.c,3);
-        CheckWaterConsumption(0);
-        CheckFoamConsumption(125);
+        CheckWaterConsumption(73625);
+        CheckFoamConsumption(31375);
         ChangeHeadCannonState(5,KnopRoofStepsType.c,3);
-        CheckWaterConsumption(0);
-        CheckFoamConsumption(0);
+        CheckWaterConsumption(61500);
+        CheckFoamConsumption(31000);
         ChangeFrontCannonState(5,FrontWaterStepsType.seven,3);
-        CheckWaterConsumption(0);
-        CheckFoamConsumption(0);
+        CheckWaterConsumption(44000);
+        CheckFoamConsumption(31000);
     }
 
     public void StartFLF()
@@ -361,8 +361,8 @@ public class TestApplication {
 
     public void CheckTanks()
     {
-       assertEquals(12500,flf.getCentralUnit().getMixer().getWaterTank().getCapacity());
-        assertEquals(2500,flf.getCentralUnit().getMixer().getFoamTank().getCapacity());
+       assertEquals(101250,flf.getCentralUnit().getMixer().getWaterTank().getCapacity());
+        assertEquals(33750,flf.getCentralUnit().getMixer().getFoamTank().getCapacity());
     }
 
     public void ChangeKnopsToOne()
